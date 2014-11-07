@@ -10,9 +10,9 @@ public class Statistics {
 		return copy;
 	}
 
-	public static double[] copyData(double[] data, int firstIndex, int lastIndex) {
-		double[] dest = new double[Math.abs(lastIndex - firstIndex) + 1];
+	private static double[] copyData(double[] data, int firstIndex, int lastIndex) {
 		int j = 0;
+		double[] dest = new double[data.length];
 		for (int i = firstIndex; i < lastIndex + 1; i++) {
 			dest[j] = data[i];
 			j++;
@@ -20,16 +20,10 @@ public class Statistics {
 		return dest;
 	}
 
-	public static double[] heapSort(double[] data)
+	public static double swap(double a, double b)
 	{
-		double[] copy = copyData(data);
-		for(int i = 0, j = copy.length - 1; i < j; i++, j--)
-		{
-			copy[i] = min(copyData(copy,i,j));
-			copy[j] = max(copyData(copy,i,j));
-		}
-		
-		return copy;
+		a = b;
+		return a;
 	}
 	
 	public static double sum(double[] data) {
@@ -73,11 +67,9 @@ public class Statistics {
 			int minMedian = (0 + findMedian);
 			int maxMedian = (copy.length - findMedian) - 1;
 			median = (copy[minMedian] + copy[maxMedian]) / 2;
-			// System.out.println(median);
 			return median;
 		}
 		int findMedian = (copy.length / 2);
-		// System.out.println(findMedian);
 		return copy[findMedian];
 
 	}
@@ -92,11 +84,9 @@ public class Statistics {
 			int minMedian = (0 + findMedian);
 			int maxMedian = (copy.length - findMedian) - 1;
 			median = (copy[minMedian] + copy[maxMedian]) / 2;
-			// System.out.println(median);
 			return median;
 		}
 		int findMedian = (copy.length / 2);
-		// System.out.println(findMedian);
 		return copy[findMedian];
 
 	}
@@ -251,7 +241,6 @@ public class Statistics {
 			}
 
 		}
-		System.out.println(freq);
 		if (noMode > values.size() / 2)
 			return new ArrayList<Double>();
 
@@ -297,20 +286,22 @@ public class Statistics {
 	}
 
 	public static void main(String[] args) {
-		double[] test = {1,5,654000,56,74,1};
+		double[] test = {1,5,6540,6540,56,74,56,74,1};
 		double[] test2 = new double[10000];
 		for(int i = 0; i < test2.length; i++)
 		{
 			test2[i] = Math.random() * 100;
+		}
 		System.out.println(arrayToString(test));
 		double[] copy = copyData(test);
 		long start = System.nanoTime();
-		ArrayList<Double>outliers = outliers(test);
+		System.out.println(outliers(test));
 		long stop = System.nanoTime();
 		System.out.println(mode(test));
 		System.out.println(stop - start);
-		
-
-	}
+		double a = 5;
+		double b = 10;
+		System.out.println(a + "and" + b);
+	
 }
 }
