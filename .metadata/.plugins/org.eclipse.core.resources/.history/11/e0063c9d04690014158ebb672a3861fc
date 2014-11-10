@@ -1,0 +1,17 @@
+
+public class StatisticsTest {
+
+	public static void main(String[] args) {
+		int i = 0;
+		for(double[] data = new double[10 + i]; i < 50; i += 10, data = new double[10 + i])
+		{
+				for (int j = 0; j < data.length; j++) {
+					data[j] = (int)(Math.random() * 10000) / 100.0;
+				}
+				System.out.println("Original Data: " + Statistics.arrayToString(data));
+				System.out.println("Sorted Data: " + Statistics.arrayToString(Statistics.sortData(data)));
+		}
+		
+	}
+
+}
