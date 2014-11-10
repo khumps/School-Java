@@ -7,12 +7,6 @@ public class StatisticsTest {
 		{
 				for (int j = 0; j < data.length; j++) {
 					data[j] = (int)(Math.random() * 10000) / 100.0;
-					if(j % 2 == 0)
-					{
-						data[++j] = data[--j];
-					j++;
-					}
-						
 				}
 				int zScore = (int)(Math.random() * data.length);
 				System.out.println("Original Data: " + Statistics.arrayToString(data));
