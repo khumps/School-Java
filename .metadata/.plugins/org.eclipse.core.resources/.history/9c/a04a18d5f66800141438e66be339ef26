@@ -1,7 +1,6 @@
 /*
  * This class contains a variety of methods that can sort, copy, and analyze
  * statistical data.
- * All data MUST be a double
  */
 
 import java.util.ArrayList;
@@ -9,7 +8,7 @@ import java.util.ArrayList;
 public class Statistics {
 
 	/*
-	 * returns a clone of a set of data
+	 * returns a clone of an array of doubles
 	 */
 	public static double[] copyData(double[] data) {
 		double[] copy = new double[data.length];
@@ -20,7 +19,7 @@ public class Statistics {
 	}
 
 	/*
-	 * Returns a clone of a part of an array of doubles from 
+	 * Returns a clone of a part of a array of doubles from 
 	 * index firstIndex to lastIndex
 	 */
 	private static double[] copyData(double[] data, int firstIndex,
@@ -35,7 +34,7 @@ public class Statistics {
 	}
 	
 	/*
-	 * returns the sum of all values in a set of data
+	 * returns the sum of all values in an array of doubles
 	 */
 	public static double sum(double[] data) {
 		double sum = 0;
@@ -114,9 +113,6 @@ public class Statistics {
 
 	}
 
-	/*
-	 * Converts an array to a string
-	 */
 	public static String arrayToString(double[] a) {
 		String s = "[";
 		int i;
@@ -129,9 +125,6 @@ public class Statistics {
 		return s;
 	}
 
-	/*
-	 * Returns the minimum value in a set of data
-	 */
 	public static double min(double[] data) {
 		if (data.length == 0)
 			return Double.NaN;
@@ -144,7 +137,7 @@ public class Statistics {
 	}
 
 	/*
-	 * Returns the Maximum for a set of data
+	 * Returns the Maximum data value for data[]
 	 */
 	public static double max(double[] data) {
 		if (data.length == 0)
@@ -158,7 +151,7 @@ public class Statistics {
 	}
 
 	/*
-	 * Returns the range of the data (Max - Min)
+	 * Returns the range of the data(Max - Min)
 	 */
 	public static double range(double[] data) {
 		if (data.length == 0)
@@ -168,7 +161,7 @@ public class Statistics {
 	}
 
 	/*
-	 * Returns the Lower Quartile for the data
+	 * Returns the Lower Quartile for data[]
 	 */
 
 	public static double lowerQuartile(double[] data) {
@@ -270,11 +263,7 @@ public class Statistics {
 			}
 
 		}
-		if (noMode > values.size() / 2) 
-			/*
-			 * If more then half of the data values occurred
-			 * the same number of times then there is no mode
-			 */
+		if (noMode > values.size() / 2)
 			return new ArrayList<Double>();
 
 		return mode;
@@ -300,9 +289,6 @@ public class Statistics {
 		return (data[index] - mean(data)) / standardDeviation(data);
 	}
 
-	/*
-	 * Returns an ArrayList<Double> of all outliers in the set of data
-	 */
 	public static ArrayList<Double> outliers(double[] data) {
 		if (data.length < 6)
 			return new ArrayList<Double>();

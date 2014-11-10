@@ -272,8 +272,8 @@ public class Statistics {
 		}
 		if (noMode > values.size() / 2) 
 			/*
-			 * If more then half of the data values occurred
-			 * the same number of times then there is no mode
+			 * If more then half of the data values occurred the same number of times
+			 * then there is no mode
 			 */
 			return new ArrayList<Double>();
 

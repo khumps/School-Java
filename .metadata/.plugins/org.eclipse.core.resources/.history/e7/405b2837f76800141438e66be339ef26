@@ -1,7 +1,6 @@
 /*
  * This class contains a variety of methods that can sort, copy, and analyze
  * statistical data.
- * All data MUST be a double
  */
 
 import java.util.ArrayList;
@@ -168,7 +167,7 @@ public class Statistics {
 	}
 
 	/*
-	 * Returns the Lower Quartile for the data
+	 * Returns the Lower Quartile for data[]
 	 */
 
 	public static double lowerQuartile(double[] data) {
@@ -270,11 +269,7 @@ public class Statistics {
 			}
 
 		}
-		if (noMode > values.size() / 2) 
-			/*
-			 * If more then half of the data values occurred
-			 * the same number of times then there is no mode
-			 */
+		if (noMode > values.size() / 2)
 			return new ArrayList<Double>();
 
 		return mode;
@@ -300,9 +295,6 @@ public class Statistics {
 		return (data[index] - mean(data)) / standardDeviation(data);
 	}
 
-	/*
-	 * Returns an ArrayList<Double> of all outliers in the set of data
-	 */
 	public static ArrayList<Double> outliers(double[] data) {
 		if (data.length < 6)
 			return new ArrayList<Double>();

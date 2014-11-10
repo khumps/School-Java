@@ -1,7 +1,16 @@
+/*
+ * This class contains a variety of methods that can sort, copy, and analyze
+ * statistical data.
+ * All data MUST be a double
+ */
+
 import java.util.ArrayList;
 
 public class Statistics {
 
+	/*
+	 * returns a clone of a set of data
+	 */
 	public static double[] copyData(double[] data) {
 		double[] copy = new double[data.length];
 		for (int i = 0; i < data.length; i++) {
@@ -10,28 +19,24 @@ public class Statistics {
 		return copy;
 	}
 
-	public static double[] copyData(double[] data, int firstIndex, int lastIndex) {
-		double[] dest = new double[Math.abs(lastIndex - firstIndex) + 1];
+	/*
+	 * Returns a clone of a part of an array of doubles from 
+	 * index firstIndex to lastIndex
+	 */
+	private static double[] copyData(double[] data, int firstIndex,
+			int lastIndex) {
 		int j = 0;
+		double[] dest = new double[data.length];
 		for (int i = firstIndex; i < lastIndex + 1; i++) {
 			dest[j] = data[i];
 			j++;
 		}
 		return dest;
 	}
-
-	public static double[] heapSort(double[] data)
-	{
-		double[] copy = copyData(data);
-		for(int i = 0, j = copy.length - 1; i < j; i++, j--)
-		{
-			copy[i] = min(copyData(copy,i,j));
-			copy[j] = max(copyData(copy,i,j));
-		}
-		
-		return copy;
-	}
 	
+	/*
+	 * returns the sum of all values in a set of data
+	 */
 	public static double sum(double[] data) {
 		double sum = 0;
 		for (int i = 0; i < data.length; i++) {
@@ -40,6 +45,9 @@ public class Statistics {
 		return sum;
 	}
 
+	/*
+	 * Sorts a set of data
+	 */
 	public static double[] sortData(double[] data) {
 		double[] sorted = copyData(data);
 		for (int inner = 0; inner < sorted.length; inner++) {
@@ -55,6 +63,9 @@ public class Statistics {
 		return sorted;
 	}
 
+	/*
+	 * Returns the mean of a set of data
+	 */
 	public static double mean(double[] data) {
 		double mean = 0;
 		for (int i = 0; i < data.length; i++) {
@@ -63,6 +74,9 @@ public class Statistics {
 		return mean /= data.length;
 	}
 
+	/*
+	 * Returns the median of a set of data
+	 */
 	public static double median(double[] data) {
 		if (data.length == 0)
 			return Double.NaN;
@@ -73,15 +87,16 @@ public class Statistics {
 			int minMedian = (0 + findMedian);
 			int maxMedian = (copy.length - findMedian) - 1;
 			median = (copy[minMedian] + copy[maxMedian]) / 2;
-			// System.out.println(median);
 			return median;
 		}
 		int findMedian = (copy.length / 2);
-		// System.out.println(findMedian);
 		return copy[findMedian];
 
 	}
-	
+
+	/*
+	 * Returns the median of a previously sorted set of data
+	 */
 	private static double medianSorted(double[] data) {
 		if (data.length == 0)
 			return Double.NaN;
@@ -92,28 +107,31 @@ public class Statistics {
 			int minMedian = (0 + findMedian);
 			int maxMedian = (copy.length - findMedian) - 1;
 			median = (copy[minMedian] + copy[maxMedian]) / 2;
-			// System.out.println(median);
 			return median;
 		}
 		int findMedian = (copy.length / 2);
-		// System.out.println(findMedian);
 		return copy[findMedian];
 
 	}
 
+	/*
+	 * Converts an array to a string
+	 */
 	public static String arrayToString(double[] a) {
 		String s = "[";
 		int i;
-		for (i = 0; i < a.length; i++)
-		{
+		for (i = 0; i < a.length; i++) {
 			s += a[i];
-			if(i < a.length - 1)
+			if (i < a.length - 1)
 				s += ", ";
 		}
 		s += "]";
 		return s;
 	}
 
+	/*
+	 * Returns the minimum value in a set of data
+	 */
 	public static double min(double[] data) {
 		if (data.length == 0)
 			return Double.NaN;
@@ -126,7 +144,7 @@ public class Statistics {
 	}
 
 	/*
-	 * Returns the Maximum data value for data[]
+	 * Returns the Maximum for a set of data
 	 */
 	public static double max(double[] data) {
 		if (data.length == 0)
@@ -140,7 +158,7 @@ public class Statistics {
 	}
 
 	/*
-	 * Returns the range of the data(Max - Min)
+	 * Returns the range of the data (Max - Min)
 	 */
 	public static double range(double[] data) {
 		if (data.length == 0)
@@ -150,7 +168,7 @@ public class Statistics {
 	}
 
 	/*
-	 * Returns the Lower Quartile for data[]
+	 * Returns the Lower Quartile for the data
 	 */
 
 	public static double lowerQuartile(double[] data) {
@@ -166,7 +184,7 @@ public class Statistics {
 		return lowerQ;
 
 	}
-	
+
 	private static double lowerQuartileSorted(double[] data) {
 		if (data.length == 0)
 			return Double.NaN;
@@ -197,7 +215,7 @@ public class Statistics {
 		return upperQ;
 
 	}
-	
+
 	private static double upperQuartileSorted(double[] data) {
 		if (data.length == 0)
 			return Double.NaN;
@@ -207,7 +225,8 @@ public class Statistics {
 		for (int i = copy.length - 1; copy[i] > median; i--) {
 			medianIndex = i;
 		}
-		double upperQ = medianSorted(copyData(copy, medianIndex, copy.length - 1));
+		double upperQ = medianSorted(copyData(copy, medianIndex,
+				copy.length - 1));
 		return upperQ;
 
 	}
@@ -215,7 +234,7 @@ public class Statistics {
 	public static double interquartileRange(double[] data) {
 		return upperQuartile(data) - lowerQuartile(data);
 	}
-	
+
 	private static double interquartileRangeSorted(double[] data) {
 		return upperQuartileSorted(data) - lowerQuartileSorted(data);
 	}
@@ -251,7 +270,6 @@ public class Statistics {
 			}
 
 		}
-		System.out.println(freq);
 		if (noMode > values.size() / 2)
 			return new ArrayList<Double>();
 
@@ -277,40 +295,38 @@ public class Statistics {
 	public static double zScore(double[] data, int index) {
 		return (data[index] - mean(data)) / standardDeviation(data);
 	}
-	
-	public static ArrayList<Double> outliers(double[] data)
-	{
-		if(data.length < 6)
+
+	/*
+	 * Returns an ArrayList<Double> of all outliers in the set of data
+	 */
+	public static ArrayList<Double> outliers(double[] data) {
+		if (data.length < 6)
 			return new ArrayList<Double>();
 		double[] copy = sortData(data);
 		ArrayList<Double> outliers = new ArrayList<Double>();
 		double isOutlier = 1.5 * interquartileRangeSorted(copy);
 		double lOutliers = lowerQuartileSorted(copy) - isOutlier;
 		double uOutliers = upperQuartileSorted(copy) + isOutlier;
-		for(int i = 0; i < data.length; i++)
-			{
-				if(data[i] < lOutliers || data[i] > uOutliers)
-					outliers.add(data[i]);
-			}
-		
+		for (int i = 0; i < data.length; i++) {
+			if (data[i] < lOutliers || data[i] > uOutliers)
+				outliers.add(data[i]);
+		}
+
 		return outliers;
 	}
 
 	public static void main(String[] args) {
-		double[] test = {1,5,654000,56,74,1};
+		double[] test = { 1, 5, 6540, 56, 74, 56, 74, 1 };
 		double[] test2 = new double[10000];
-		for(int i = 0; i < test2.length; i++)
-		{
+		for (int i = 0; i < test2.length; i++) {
 			test2[i] = Math.random() * 100;
+		}
 		System.out.println(arrayToString(test));
 		double[] copy = copyData(test);
 		long start = System.nanoTime();
-		ArrayList<Double>outliers = outliers(test);
+		mode(test2);
 		long stop = System.nanoTime();
 		System.out.println(mode(test));
 		System.out.println(stop - start);
-		
-
 	}
-}
 }
