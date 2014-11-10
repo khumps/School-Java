@@ -292,7 +292,7 @@ public class Statistics {
 		System.out.println(arrayToString(test));
 		double[] copy = copyData(test);
 		long start = System.nanoTime();
-		outliers(test2);
+		System.out.println(outliers(test));
 		long stop = System.nanoTime();
 		System.out.println(mode(test));
 		System.out.println(stop - start);
