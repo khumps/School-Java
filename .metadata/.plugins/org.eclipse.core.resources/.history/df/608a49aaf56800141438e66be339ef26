@@ -1,15 +1,7 @@
-/*
- * This class contains a variety of methods that can sort, copy, and analyze
- * statistical data.
- */
-
 import java.util.ArrayList;
 
 public class Statistics {
 
-	/*
-	 * returns a clone of an array of doubles
-	 */
 	public static double[] copyData(double[] data) {
 		double[] copy = new double[data.length];
 		for (int i = 0; i < data.length; i++) {
@@ -18,10 +10,6 @@ public class Statistics {
 		return copy;
 	}
 
-	/*
-	 * Returns a clone of a part of a array of doubles from 
-	 * index firstIndex to lastIndex
-	 */
 	private static double[] copyData(double[] data, int firstIndex,
 			int lastIndex) {
 		int j = 0;
@@ -32,10 +20,7 @@ public class Statistics {
 		}
 		return dest;
 	}
-	
-	/*
-	 * returns the sum of all values in an array of doubles
-	 */
+
 	public static double sum(double[] data) {
 		double sum = 0;
 		for (int i = 0; i < data.length; i++) {
@@ -44,9 +29,6 @@ public class Statistics {
 		return sum;
 	}
 
-	/*
-	 * Sorts data in an array of doubles
-	 */
 	public static double[] sortData(double[] data) {
 		double[] sorted = copyData(data);
 		for (int inner = 0; inner < sorted.length; inner++) {
@@ -62,9 +44,6 @@ public class Statistics {
 		return sorted;
 	}
 
-	/*
-	 * Returns the mean of an array of doubles
-	 */
 	public static double mean(double[] data) {
 		double mean = 0;
 		for (int i = 0; i < data.length; i++) {
@@ -73,9 +52,6 @@ public class Statistics {
 		return mean /= data.length;
 	}
 
-	/*
-	 * Returns the median of an array of doubles
-	 */
 	public static double median(double[] data) {
 		if (data.length == 0)
 			return Double.NaN;
@@ -311,7 +287,7 @@ public class Statistics {
 		System.out.println(arrayToString(test));
 		double[] copy = copyData(test);
 		long start = System.nanoTime();
-		mode(test2);
+		mode(test);
 		long stop = System.nanoTime();
 		System.out.println(mode(test));
 		System.out.println(stop - start);

@@ -44,9 +44,6 @@ public class Statistics {
 		return sum;
 	}
 
-	/*
-	 * Sorts data in an array of doubles
-	 */
 	public static double[] sortData(double[] data) {
 		double[] sorted = copyData(data);
 		for (int inner = 0; inner < sorted.length; inner++) {
@@ -62,9 +59,6 @@ public class Statistics {
 		return sorted;
 	}
 
-	/*
-	 * Returns the mean of an array of doubles
-	 */
 	public static double mean(double[] data) {
 		double mean = 0;
 		for (int i = 0; i < data.length; i++) {
@@ -73,9 +67,6 @@ public class Statistics {
 		return mean /= data.length;
 	}
 
-	/*
-	 * Returns the median of an array of doubles
-	 */
 	public static double median(double[] data) {
 		if (data.length == 0)
 			return Double.NaN;
