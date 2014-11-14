@@ -26,7 +26,7 @@ public class Statistics {
 	private static double[] copyData(double[] data, int firstIndex,
 			int lastIndex) {
 		int j = 0;
-		double[] dest = new double[data.length];
+		double[] dest = new double[lastIndex - firstIndex + 1];
 		for (int i = firstIndex; i < lastIndex + 1; i++) {
 			dest[j] = data[i];
 			j++;
@@ -211,7 +211,7 @@ public class Statistics {
 		for (int i = copy.length - 1; copy[i] > median; i--) {
 			medianIndex = i;
 		}
-		double upperQ = median(copyData(copy, medianIndex, copy.length - 1));
+		double upperQ = median(copyData(copy, medianIndex , copy.length - 1));
 		return upperQ;
 
 	}
@@ -319,19 +319,3 @@ public class Statistics {
 
 		return outliers;
 	}
-
-	public static void main(String[] args) {
-		double[] test = { 1, 5, 6540, 56, 74, 56, 74, 1 };
-		double[] test2 = new double[10000];
-		for (int i = 0; i < test2.length; i++) {
-			test2[i] = Math.random() * 100;
-		}
-		System.out.println(arrayToString(test));
-		double[] copy = copyData(test);
-		long start = System.nanoTime();
-		mode(test2);
-		long stop = System.nanoTime();
-		System.out.println(mode(test));
-		System.out.println(stop - start);
-	}
-}
