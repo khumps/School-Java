@@ -10,7 +10,7 @@ public class Display extends JFrame {
 	Display() {
 		final ArrayList<JButton> cells = new ArrayList<JButton>();
 		int borderWidth = 1;
-		final int boardSize = 50;
+		final int boardSize = 25;
 		final GameOfLife life = new GameOfLife(boardSize);
 		this.setTitle("The Game of Life");
 		this.setVisible(true);

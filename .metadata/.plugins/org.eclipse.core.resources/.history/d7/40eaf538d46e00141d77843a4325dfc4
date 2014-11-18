@@ -10,7 +10,7 @@ public class Display extends JFrame {
 	Display() {
 		final ArrayList<JButton> cells = new ArrayList<JButton>();
 		int borderWidth = 1;
-		final int boardSize = 50;
+		final int boardSize = 25;
 		final GameOfLife life = new GameOfLife(boardSize);
 		this.setTitle("The Game of Life");
 		this.setVisible(true);
@@ -64,11 +64,11 @@ public class Display extends JFrame {
 					for(int j = 0; j < life.board.board[0].length; j++)
 					{
 						if (life.isAlive(i, j)) {
-							cells.get((i * boardSize) + j).setBackground(Color.GREEN);
+							cells.get((i * boardSize) + j).setBackground(new JButton().getBackground());
 						}
 
 						else {
-							cells.get((i * boardSize) + j).setBackground(new JButton().getBackground());
+							cells.get((i * boardSize) + j).setBackground(Color.GREEN);
 						}
 					}
 				}
