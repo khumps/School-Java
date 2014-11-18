@@ -77,9 +77,9 @@ public class Display extends JFrame {
 				
 			}
 		});
-		clear.setSize(125, 30);
-		clear.setLocation(500, 20);
-		clear.setText("Clear");
+		clear.setSize(200, 30);
+		clear.setLocation(630, 20);
+		clear.setText("Plus 5 Generations");
 		clear.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent f) {
@@ -89,9 +89,9 @@ public class Display extends JFrame {
 			}
 	
 		});	
-		genFive.setSize(200, 30);
-		genFive.setLocation(630, 20);
-		genFive.setText("Plus Five Generations");
+		genFive.setSize(125, 30);
+		genFive.setLocation(500, 20);
+		genFive.setText("Clear Board");
 		genFive.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent g) {
@@ -118,7 +118,7 @@ public class Display extends JFrame {
 		this.add(prevGen);
 		this.add(nextGen);
 		this.add(clear);
-		this.add(genFive);
+		this.add(genFive)
 		this.add(background);
 		
 

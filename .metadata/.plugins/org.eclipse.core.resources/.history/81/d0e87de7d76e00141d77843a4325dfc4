@@ -10,7 +10,7 @@ public class Display extends JFrame {
 	Display() {
 		final ArrayList<JButton> cells = new ArrayList<JButton>();
 		int borderWidth = 1;
-		final int boardSize = 25;
+		final int boardSize = 50;
 		final GameOfLife life = new GameOfLife(boardSize);
 		this.setTitle("The Game of Life");
 		this.setVisible(true);
@@ -79,46 +79,19 @@ public class Display extends JFrame {
 		});
 		clear.setSize(125, 30);
 		clear.setLocation(500, 20);
-		clear.setText("Clear");
+		clear.setText("Clear Board");
 		clear.addActionListener(new ActionListener()
 		{
-			public void actionPerformed(ActionEvent f) {
+			public void actionPerformed(ActionEvent g) {
 				for(int i = 0; i < cells.size(); i ++)
 					cells.get(i).setBackground(new JButton().getBackground());
 					life.board.clear();
-			}
-	
-		});	
-		genFive.setSize(200, 30);
-		genFive.setLocation(630, 20);
-		genFive.setText("Plus Five Generations");
-		genFive.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent g) {
-				for(int k = 0; k < 5; k++)
-				{
-				life.nextGeneration();
-				for(int i = 0; i < life.board.board.length; i++)
-				{
-					for(int j = 0; j < life.board.board[0].length; j++)
-					{
-						if (life.isAlive(i, j)) {
-							cells.get((i * boardSize) + j).setBackground(Color.GREEN);
-						}
-
-						else {
-							cells.get((i * boardSize) + j).setBackground(new JButton().getBackground());
-						}
-					}
-				}
-			}
 			}
 	
 		});
 		this.add(prevGen);
 		this.add(nextGen);
 		this.add(clear);
-		this.add(genFive);
 		this.add(background);
 		
 

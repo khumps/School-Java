@@ -77,9 +77,9 @@ public class Display extends JFrame {
 				
 			}
 		});
-		clear.setSize(125, 30);
-		clear.setLocation(500, 20);
-		clear.setText("Clear");
+		clear.setSize(200, 30);
+		clear.setLocation(630, 20);
+		clear.setText("Plus 5 Generations");
 		clear.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent f) {
@@ -88,37 +88,21 @@ public class Display extends JFrame {
 					life.board.clear();
 			}
 	
-		});	
-		genFive.setSize(200, 30);
-		genFive.setLocation(630, 20);
-		genFive.setText("Plus Five Generations");
-		genFive.addActionListener(new ActionListener()
+		});		clear.setSize(125, 30);
+		clear.setLocation(500, 20);
+		clear.setText("Clear Board");
+		clear.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent g) {
-				for(int k = 0; k < 5; k++)
-				{
-				life.nextGeneration();
-				for(int i = 0; i < life.board.board.length; i++)
-				{
-					for(int j = 0; j < life.board.board[0].length; j++)
-					{
-						if (life.isAlive(i, j)) {
-							cells.get((i * boardSize) + j).setBackground(Color.GREEN);
-						}
-
-						else {
-							cells.get((i * boardSize) + j).setBackground(new JButton().getBackground());
-						}
-					}
-				}
-			}
+				for(int i = 0; i < cells.size(); i ++)
+					cells.get(i).setBackground(new JButton().getBackground());
+					life.board.clear();
 			}
 	
 		});
 		this.add(prevGen);
 		this.add(nextGen);
 		this.add(clear);
-		this.add(genFive);
 		this.add(background);
 		
 
