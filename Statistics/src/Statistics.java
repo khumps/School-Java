@@ -319,3 +319,4 @@ public class Statistics {
 
 		return outliers;
 	}
+}

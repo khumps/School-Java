@@ -1,0 +1,46 @@
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+
+
+@SuppressWarnings("serial")
+public class Display extends JFrame{
+
+	Display()
+	{
+		int boardSize = 100;
+		this.setTitle("The Game of Life");
+		this.setVisible(true);
+		JButton nextGen = new JButton();
+		JButton prevGen = new JButton();
+		JPanel background = new JPanel();
+		JPanel game = new JPanel();
+		background.add(game);
+		game.setSize(1 * boardSize , 1 * boardSize);
+		game.setBackground(Color.green);
+		prevGen.setSize(150,30);
+		prevGen.setLocation(50, 20);
+		prevGen.setText("Previous Generation");
+		nextGen.setSize(150,30);
+		nextGen.setLocation(300, 20);
+		nextGen.setText("Next Generation");
+		this.add(prevGen);
+		this.add(nextGen);
+		this.add(game);
+		
+	}
+	
+	public static void main(String[] args)
+	{
+		Display test = new Display();
+		test.setSize(1500, 1500);
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+}

@@ -3,7 +3,7 @@ import javax.swing.JPanel;
 public class GameOfLife extends JPanel {
 
 	Board board;
-	int[][] modifiedBoard;
+	Board modifiedBoard;
 	int generationNum = 0;
 
 	public GameOfLife(int rows, int cols) {
@@ -20,6 +20,11 @@ public class GameOfLife extends JPanel {
 	
 	public GameOfLife(int size) {
 		board = new Board(size);
+	}
+	
+	public GameOfLife(int[][] grid)
+	{
+		board = new Board(grid);
 	}
 
 	public int getGenerationNum() {
@@ -84,13 +89,12 @@ public class GameOfLife extends JPanel {
 			for(int j = 0; j < this.board.board[0].length; j++)
 			{
 				if(this.willLive(i, j) == true)
-					this.modifiedBoard[i][j] = 1;
+					this.modifiedBoard.board[i][j] = 1;
 				if(this.willLive(i, j) == false)
-					this.modifiedBoard[i][j] = 0;
+					this.modifiedBoard.board[i][j] = 0;
 			}
 		}
-		this.board = new Board(modifiedBoard);
-		System.out.println(toString(modifiedBoard));
+		this.board = new Board(modifiedBoard.board);
 		generationNum++;
 	}
 	
@@ -112,20 +116,21 @@ public class GameOfLife extends JPanel {
 	}
 	public static void main(String[] args)
 	{
-		GameOfLife game = new GameOfLife(5);
-		//for(int i = 0; i < 100; i++)	
-		//game.board.setTile((int)(Math.random() * 5), (int)(Math.random() * 5), (int)(Math.random() * 2));
-		game.board.setTile(1, 1, 1);
+		GameOfLife game = new GameOfLife(10);
+		for(int i = 0; i < 100; i++)	
+		game.board.setTile((int)(Math.random() * 5), (int)(Math.random() * 5), (int)(Math.random() * 2));
+		/*game.board.setTile(1, 1, 1);
 		game.board.setTile(0, 2, 1);
 		game.board.setTile(1, 3, 1);
 		game.board.setTile(1, 0, 1);
-		game.board.setTile(1, 2, 1);
+		game.board.setTile(1, 2, 1);*/
 		System.out.println(game.toString());
-		System.out.println("numNeighbors" + game.countNeighbors(1, 2));
-		System.out.println(game.board.getTile(0, 1));
-		game.nextGeneration(); 
+		//System.out.println("numNeighbors" + game.countNeighbors(1, 2));
+		//System.out.println(game.board.getTile(0, 1));
 		game.nextGeneration();
-		
+		System.out.println(game.toString());
+		game.nextGeneration();
+		System.out.println(game.toString());
 	}
 
 }

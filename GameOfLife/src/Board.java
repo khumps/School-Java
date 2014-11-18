@@ -21,6 +21,10 @@ public class Board {
 	public Board(int[][] grid)
 	{
 		board = new int[grid.length][grid[0].length];
+		for(int i = 0; i < grid.length; i++)
+			for(int j = 0; j < grid[0].length; j++)
+				board[i][j] = grid[i][j];
+		
 		numRows = grid.length;
 		numCols = grid[0].length;
 	}
@@ -82,20 +86,10 @@ public class Board {
 		return numCols;
 	}
 	
-	public int[][] copyBoard()
+	public Board copyBoard()
 	{
-		int[][] copy = new int[this.board.length][this.board[0].length];
-		int i = 0;
-		for(int[] row: this.board)
-		{
-			
-			for(int col: this.board[i])
-			{
-				copy[i][col] = board[i][col];
-			}
-				i++;
-		}
-		return copy;
+		return new Board(this.board.length,this.board[0].length);
+
 	}
 	
 	
