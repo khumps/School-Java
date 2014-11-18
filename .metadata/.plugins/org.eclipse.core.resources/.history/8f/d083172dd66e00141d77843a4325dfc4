@@ -77,23 +77,12 @@ public class Display extends JFrame {
 				
 			}
 		});
-		clear.setSize(125, 30);
+		clear.setSize(75, 30);
 		clear.setLocation(500, 20);
-		clear.setText("Clear Board");
-		clear.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent g) {
-				for(int i = 0; i < cells.size(); i ++)
-					cells.get(i).setBackground(new JButton().getBackground());
-					life.board.clear();
-			}
-	
-		});
+		clear.setText("Next Generation");
 		this.add(prevGen);
 		this.add(nextGen);
-		this.add(clear);
 		this.add(background);
-		
 
 	}
 

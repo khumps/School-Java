@@ -85,7 +85,6 @@ public class Display extends JFrame {
 			public void actionPerformed(ActionEvent g) {
 				for(int i = 0; i < cells.size(); i ++)
 					cells.get(i).setBackground(new JButton().getBackground());
-					life.board.clear();
 			}
 	
 		});
