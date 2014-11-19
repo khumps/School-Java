@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class Display extends JFrame implements ActionListener{
+public class Display extends JFrame {
 
 	Display() {
-		final ArrayList<JButton> cells = new ArrayList<JButton>();
+		final ArrayList<JLabel> cells = new ArrayList<JLabel>();
 		int borderWidth = 1;
 		final int boardSize = 50;
 		final GameOfLife life = new GameOfLife(boardSize);
@@ -27,13 +27,13 @@ public class Display extends JFrame implements ActionListener{
 		for (int i = 0; i < boardSize * boardSize; i++) {
 			final int row = (i / boardSize);
 			final int col = i % boardSize;
-			final JButton cell = new JButton();
+			final JLabel cell = new JLabel();
 			cell.setBorder(BorderFactory.createMatteBorder(borderWidth, 0,
 					borderWidth, borderWidth, Color.BLACK));
 			game.add(cell);
 			cells.add(cell);
-			cell.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
+			cell.addMouseListener(null) {
+				public void mouseClicked(MouseEvent a) {
 					if (life.isAlive(row, col)) {
 						life.getBoard().setTile(row, col, 0);
 						cell.setBackground(new JButton().getBackground());

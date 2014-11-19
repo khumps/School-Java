@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class Display extends JFrame implements ActionListener{
+public class Display extends JFrame {
 
 	Display() {
 		final ArrayList<JButton> cells = new ArrayList<JButton>();

@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class Display extends JFrame implements ActionListener{
+public class DisplayTest extends JFrame implements MouseListener{
 
-	Display() {
-		final ArrayList<JButton> cells = new ArrayList<JButton>();
+	DisplayTest() {
+		final ArrayList<JLabel> cells = new ArrayList<JLabel>();
 		int borderWidth = 1;
 		final int boardSize = 50;
 		final GameOfLife life = new GameOfLife(boardSize);
@@ -27,13 +27,15 @@ public class Display extends JFrame implements ActionListener{
 		for (int i = 0; i < boardSize * boardSize; i++) {
 			final int row = (i / boardSize);
 			final int col = i % boardSize;
-			final JButton cell = new JButton();
+			final JLabel cell = new JLabel();
 			cell.setBorder(BorderFactory.createMatteBorder(borderWidth, 0,
 					borderWidth, borderWidth, Color.BLACK));
 			game.add(cell);
 			cells.add(cell);
-			cell.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
+			cell.addMouseListener(this);
+			addMouseListener(this);
+				
+				public void mousePressed(MouseEvent e){
 					if (life.isAlive(row, col)) {
 						life.getBoard().setTile(row, col, 0);
 						cell.setBackground(new JButton().getBackground());
@@ -46,7 +48,6 @@ public class Display extends JFrame implements ActionListener{
 
 				}
 
-			});
 		}
 		game.setLocation(120, 100);
 		game.setSize(750, 750);
@@ -131,8 +132,38 @@ public class Display extends JFrame implements ActionListener{
 	}
 
 	public static void main(String[] args) {
-		Display test = new Display();
+		DisplayTest test = new DisplayTest();
 		test.setSize(1000, 1000);
 
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }
