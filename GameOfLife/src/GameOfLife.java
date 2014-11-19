@@ -1,10 +1,24 @@
+import java.util.ArrayList;
+
 import javax.swing.JPanel;
 
-public class GameOfLife extends JPanel {
+public class GameOfLife{
 
-	Board board;
-	Board modifiedBoard;
-	int generationNum = 0;
+	private ArrayList<Board> boards = new ArrayList<Board>();
+	private Board board;
+	private Board modifiedBoard;
+	public ArrayList<Board> getBoards() {
+		return boards;
+	}
+
+	public Board getBoard() {
+		return board;
+	}
+
+	public Board getModifiedBoard() {
+		return modifiedBoard;
+	}
+	private int generationNum = 0;
 
 	public GameOfLife(int rows, int cols) {
 		board = new Board(rows, cols);
@@ -83,6 +97,7 @@ public class GameOfLife extends JPanel {
 	
 	public void nextGeneration()
 	{
+		boards.add(board);
 		modifiedBoard = this.board.copyBoard();
 		for(int i = 0; i < this.board.board.length; i++)
 		{
@@ -95,6 +110,7 @@ public class GameOfLife extends JPanel {
 			}
 		}
 		this.board = new Board(modifiedBoard.board);
+		boards.add(board);
 		generationNum++;
 	}
 	
