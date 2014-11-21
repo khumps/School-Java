@@ -8,9 +8,10 @@ import javax.swing.*;
 public class Display extends JFrame implements ActionListener {
 
 	Display() {
-		final ArrayList<JButton> cells = new ArrayList<JButton>();
+		
 		int borderWidth = 1;
 		final int boardSize = 50;
+                final JPanel[][] cells = new JPanel[boardSize][boardSize];
 		final GameOfLife life = new GameOfLife(boardSize);
 		this.setTitle("The Game of Life");
 		this.setVisible(true);
@@ -25,10 +26,10 @@ public class Display extends JFrame implements ActionListener {
 		background.add(game);
 		GridLayout grid = new GridLayout(boardSize, boardSize, 0, 0);
 		game.setLayout(grid);
-		for (int i = 0; i < boardSize * boardSize; i++) {
-			final int row = (i / boardSize);
-			final int col = i % boardSize;
+		for (int i = 0; i < boardSize; i++) {
+			for(int j = 0; j < boardSize; j++)
 			final JButton cell = new JButton();
+			
 			cell.setBorder(BorderFactory.createMatteBorder(borderWidth, 0,
 					borderWidth, borderWidth, Color.BLACK));
 			game.add(cell);
