@@ -28,12 +28,13 @@ public class Display extends JFrame implements ActionListener {
 		game.setLayout(grid);
 		for (int i = 0; i < boardSize; i++) {
 			for(int j = 0; j < boardSize; j++)
-			final JButton cell = new JButton();
-			
+			{
+			final Jpanel cell = new JPanel();
+			cells[i][j] = cell;
+			}
 			cell.setBorder(BorderFactory.createMatteBorder(borderWidth, 0,
 					borderWidth, borderWidth, Color.BLACK));
 			game.add(cell);
-			cells.add(cell);
 			cell.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (life.isAlive(row, col)) {
