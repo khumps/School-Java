@@ -5,7 +5,7 @@ NewDisplay()
 {
   int cellSize = 1;
   int boardSize = 25;
-  int coords[][] = new int[boardSize][boardSize];
+ JPanel cells[][] = new int[boardSize][boardSize];
   GameOfLife game = new GameOfLife(boardSize);
   this.setTitle("The Game of Life");
   this.setVisible(true);
@@ -23,5 +23,5 @@ NewDisplay()
 	
 	public void MouseClicked(MouseEvent e)
 	{
-	
+	cells[get]
 	}
