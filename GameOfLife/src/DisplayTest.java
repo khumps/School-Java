@@ -5,21 +5,22 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class DisplayTest extends JFrame implements MouseListener {
+public class Display extends JFrame implements ActionListener {
 
 	Display() {
-		final ArrayList<JPanel> cells = new ArrayList<JPanel>();
+		final ArrayList<JButton> cells = new ArrayList<JButton>();
 		int borderWidth = 1;
 		final int boardSize = 50;
 		final GameOfLife life = new GameOfLife(boardSize);
 		this.setTitle("The Game of Life");
 		this.setVisible(true);
 		JButton nextGen = new JButton();
+		JTextField gen = new JTextField();
 		JButton prevGen = new JButton();
 		JButton clear = new JButton();
 		JButton genFive = new JButton();
 		JPanel background = new JPanel();
-		background.setBackground(Color.BLACK);
+		background.setBackground(Color.WHITE);
 		JPanel game = new JPanel();
 		background.add(game);
 		GridLayout grid = new GridLayout(boardSize, boardSize, 0, 0);
@@ -27,27 +28,36 @@ public class DisplayTest extends JFrame implements MouseListener {
 		for (int i = 0; i < boardSize * boardSize; i++) {
 			final int row = (i / boardSize);
 			final int col = i % boardSize;
-			final JPanel cell = new JPanel();
+			final JButton cell = new JButton();
 			cell.setBorder(BorderFactory.createMatteBorder(borderWidth, 0,
 					borderWidth, borderWidth, Color.BLACK));
 			game.add(cell);
 			cells.add(cell);
-			cell.addMouseListener(this);
-			addMouseListener(this);
-			
+			cell.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if (life.isAlive(row, col)) {
+						life.getBoard().setTile(row, col, 0);
+						cell.setBackground(new JButton().getBackground());
+					}
+
+					else {
+						life.getBoard().setTile(row, col, 1);
+						cell.setBackground(Color.GREEN);
+					}
+
+				}
+
+			});
 		}
 		game.setLocation(120, 100);
 		game.setSize(750, 750);
 		background.setLayout(null);
 		game.setBackground(Color.green);
-		JLabel genNum = new JLabel("" + life.getGenerationNum());
+		final JLabel genNum = new JLabel("" + life.getGenerationNum());
+		genNum.setSize(50,30);
 		prevGen.setSize(150, 30);
 		prevGen.setLocation(145, 20);
 		prevGen.setText("Previous Generation");
-/*		prevGen.setActionListener(new ActionListener()
-		{
-			public void actionPerforme
-		});*/
 		nextGen.setSize(150, 30);
 		nextGen.setLocation(300, 20);
 		nextGen.setText("Next Generation");
@@ -62,8 +72,8 @@ public class DisplayTest extends JFrame implements MouseListener {
 						}
 
 						else {
-							cells.get((i * boardSize) + j).setBackground(
-									new JButton().getBackground());
+							cells.get((i * boardSize) + j).setBackground(new JButton().getBackground());
+							genNum.setText("" + life.getGenerationNum());
 						}
 					}
 				}
@@ -91,9 +101,11 @@ public class DisplayTest extends JFrame implements MouseListener {
 
 				// while(play)
 				{
+					for(int k = 0; k < 5; k++)
+					{
 					life.nextGeneration();
-					for (int i = 0; i < life.getBoard().board.length; i++) {
-						for (int j = 0; j < life.getBoard().board[0].length; j++) {
+					for (int i = 0; i < life.getBoards().board.length; i++) {
+						for (int j = 0; j < life.getBoards().board[0].length; j++) {
 							if (life.isAlive(i, j)) {
 								cells.get((i * boardSize) + j).setBackground(
 										Color.GREEN);
@@ -102,10 +114,12 @@ public class DisplayTest extends JFrame implements MouseListener {
 							else {
 								cells.get((i * boardSize) + j).setBackground(
 										new JButton().getBackground());
+								genNum.setText("" + life.getGenerationNum());
 							}
 						}
 					}
 
+				}
 				}
 			}
 
@@ -115,13 +129,9 @@ public class DisplayTest extends JFrame implements MouseListener {
 		this.add(clear);
 		this.add(genFive);
 		this.add(genNum);
+		
 		this.add(background);
 
-	}
-	
-	public void MouseClicked(MouseEvent a)
-	{
-		System.out.println("test");
 	}
 
 	public static void main(String[] args) {
