@@ -8,8 +8,8 @@ public class GameOfLife {
 	private Board board;
 	private Board modifiedBoard;
 
-	public ArrayList<Board> getBoards(int i) {
-		return boards.get(i);
+	public ArrayList<Board> getBoards() {
+		return boards;
 	}
 
 	public Board getBoard() {

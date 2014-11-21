@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class Display extends JFrame implements ActionListener {
+public class Display extends JFrame implements ActionListener{
 
 	Display() {
 		final ArrayList<JButton> cells = new ArrayList<JButton>();
@@ -15,12 +15,11 @@ public class Display extends JFrame implements ActionListener {
 		this.setTitle("The Game of Life");
 		this.setVisible(true);
 		JButton nextGen = new JButton();
-		JTextField gen = new JTextField();
 		JButton prevGen = new JButton();
 		JButton clear = new JButton();
 		JButton genFive = new JButton();
 		JPanel background = new JPanel();
-		background.setBackground(Color.WHITE);
+		background.setBackground(Color.BLACK);
 		JPanel game = new JPanel();
 		background.add(game);
 		GridLayout grid = new GridLayout(boardSize, boardSize, 0, 0);
@@ -53,8 +52,7 @@ public class Display extends JFrame implements ActionListener {
 		game.setSize(750, 750);
 		background.setLayout(null);
 		game.setBackground(Color.green);
-		final JLabel genNum = new JLabel("" + life.getGenerationNum());
-		genNum.setSize(50,30);
+		JLabel genNum = new JLabel("" + life.getGenerationNum());
 		prevGen.setSize(150, 30);
 		prevGen.setLocation(145, 20);
 		prevGen.setText("Previous Generation");
@@ -64,73 +62,71 @@ public class Display extends JFrame implements ActionListener {
 		nextGen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent f) {
 				life.nextGeneration();
-				for (int i = 0; i < life.getBoard().board.length; i++) {
-					for (int j = 0; j < life.getBoard().board[0].length; j++) {
+				for(int i = 0; i < life.getBoard().board.length; i++)
+				{
+					for(int j = 0; j < life.getBoard().board[0].length; j++)
+					{
 						if (life.isAlive(i, j)) {
-							cells.get((i * boardSize) + j).setBackground(
-									Color.GREEN);
+							cells.get((i * boardSize) + j).setBackground(Color.GREEN);
 						}
 
 						else {
 							cells.get((i * boardSize) + j).setBackground(new JButton().getBackground());
-							genNum.setText("" + life.getGenerationNum());
 						}
 					}
 				}
-
+				
 			}
 		});
 		clear.setSize(125, 30);
 		clear.setLocation(500, 20);
 		clear.setText("Clear");
-		clear.addActionListener(new ActionListener() {
+		clear.addActionListener(new ActionListener()
+		{
 			public void actionPerformed(ActionEvent f) {
-				for (int i = 0; i < cells.size(); i++)
+				for(int i = 0; i < cells.size(); i ++)
 					cells.get(i).setBackground(new JButton().getBackground());
-				life.getBoard().clear();
+					life.getBoard().clear();
 			}
-
-		});
+	
+		});	
 		genFive.setSize(200, 30);
 		genFive.setLocation(630, 20);
 		genFive.setText("Plus Five Generations");
-		genFive.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent g) {
-				boolean play = false;
-				play = true;
-
-				// while(play)
-				{
-					for(int k = 0; k < 5; k++)
+		genFive.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent g) {		
+					boolean play = false;
+					play = true;
+					
+					//while(play)
 					{
-					life.nextGeneration();
-					for (int i = 0; i < life.getBoards().board.length; i++) {
-						for (int j = 0; j < life.getBoards().board[0].length; j++) {
-							if (life.isAlive(i, j)) {
-								cells.get((i * boardSize) + j).setBackground(
-										Color.GREEN);
-							}
+						life.nextGeneration();
+						for(int i = 0; i < life.getBoard().board.length; i++)
+						{
+							for(int j = 0; j < life.getBoard().board[0].length; j++)
+							{
+								if (life.isAlive(i, j)) {
+									cells.get((i * boardSize) + j).setBackground(Color.GREEN);
+								}
 
-							else {
-								cells.get((i * boardSize) + j).setBackground(
-										new JButton().getBackground());
-								genNum.setText("" + life.getGenerationNum());
+								else {
+									cells.get((i * boardSize) + j).setBackground(new JButton().getBackground());
+								}
 							}
 						}
+						
 					}
-
-				}
-				}
 			}
-
+	
 		});
 		this.add(prevGen);
 		this.add(nextGen);
 		this.add(clear);
 		this.add(genFive);
 		this.add(genNum);
-		
 		this.add(background);
+		
 
 	}
 
