@@ -8,8 +8,8 @@ public class GameOfLife {
 	private Board board;
 	private Board modifiedBoard;
 
-	public Board getBoard(int i) {
-		return board;
+	public Board getBoards(int i) {
+		return boards.get(i);
 	}
 
 	public Board getBoard() {
