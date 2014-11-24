@@ -6,18 +6,39 @@ import javax.swing.*;
 
 @SuppressWarnings("serial")
 public class Display extends JFrame implements ActionListener {
+	int borderWidth = 1;
+	static int boardSize = 50;
+	static boolean isRunning = false;
+	static GameOfLife life = new GameOfLife(boardSize);
+	final static JLabel genNum = new JLabel("" + life.getGenerationNum());
+	final static ArrayList<JButton> cells = new ArrayList<JButton>();
 
 	Display() {
-		final ArrayList<JButton> cells = new ArrayList<JButton>();
-		int borderWidth = 1;
-		final int boardSize = 50;
-		final GameOfLife life = new GameOfLife(boardSize);
+
 		this.setTitle("The Game of Life");
 		this.setVisible(true);
+		JButton prevGen = new JButton();
 		JButton nextGen = new JButton();
 		JTextField gen = new JTextField();
 		JButton clear = new JButton();
 		JButton genFive = new JButton();
+		final JButton run = new JButton();
+		run.setSize(150, 30);
+		run.setLocation(400, 20);
+		run.setText("Start");
+		run.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent b) {
+				if (isRunning == false) {
+					isRunning = true;
+					run.setText("Stop");
+				}
+				if (isRunning == true) {
+					isRunning = false;
+					run.setText("Start");
+				}
+
+			}
+		});
 		JPanel background = new JPanel();
 		background.setBackground(Color.WHITE);
 		JPanel game = new JPanel();
@@ -28,7 +49,7 @@ public class Display extends JFrame implements ActionListener {
 			final int row = (i / boardSize);
 			final int col = i % boardSize;
 			final JButton cell = new JButton();
-			cell.setBorder(BorderFactory.createMatteBorder(borderWidth, 0,
+			cell.setBorder(BorderFactory.createMatteBorder(borderWidth, 1,
 					borderWidth, borderWidth, Color.BLACK));
 			game.add(cell);
 			cells.add(cell);
@@ -49,10 +70,9 @@ public class Display extends JFrame implements ActionListener {
 			});
 		}
 		game.setLocation(120, 100);
-		game.setSize(750, 750);
+		game.setSize(755, 750);
 		background.setLayout(null);
-		game.setBackground(Color.RED);
-		final JLabel genNum = new JLabel("" + life.getGenerationNum());
+
 		genNum.setSize(50, 30);
 		prevGen.setSize(150, 30);
 		prevGen.setLocation(145, 20);
@@ -129,6 +149,7 @@ public class Display extends JFrame implements ActionListener {
 		this.add(nextGen);
 		this.add(clear);
 		this.add(genFive);
+		this.add(run);
 		this.add(genNum);
 
 		this.add(background);
@@ -138,6 +159,29 @@ public class Display extends JFrame implements ActionListener {
 	public static void main(String[] args) {
 		Display test = new Display();
 		test.setSize(1000, 1000);
+		while (isRunning) {
+			life.nextGeneration();
+			for (int i = 0; i < life.getBoard().board.length; i++) {
+				for (int j = 0; j < life.getBoard().board[0].length; j++) {
+					if (life.isAlive(i, j)) {
+						cells.get((i * boardSize) + j).setBackground(
+								Color.GREEN);
+					}
+
+					else {
+						cells.get((i * boardSize) + j).setBackground(
+								new JButton().getBackground());
+						genNum.setText("" + life.getGenerationNum());
+					}
+				}
+			}
+		}
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
 
 	}
 }
