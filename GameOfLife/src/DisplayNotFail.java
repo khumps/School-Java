@@ -20,8 +20,14 @@ public class DisplayNotFail extends JFrame implements ActionListener {
 	ArrayList<JButton> cells = new ArrayList<JButton>();
 	this.setPreferredSize(new Dimension(1000,1000));
 	JButton play = new JButton("Start");
+	play.addActionListener(this);
+	play.setActionCommand("play");
 	JButton nextGen = new JButton("Next Generation");
+	nextGen.addActionListener(this);
+	nextGen.addActionCommand("next");
 	JButton prevGen = new JButton("Previous Generation");
+	prevGen.addActionListener(this);
+	prevGen.addActionCommand("prev");
 	
 	this.add(prevGen);
 	this.add(nextGen);
@@ -33,7 +39,20 @@ public class DisplayNotFail extends JFrame implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e)
 	{
-		
+		String command = e.getActionCommand();
+		if(command.equals("play")
+		{
+			if(isRunning = false)
+			play.setText()
+		}
+		if(command.equals("next")
+		{
+			
+		}
+		if(command.equals("prev")
+		{
+			
+		}
 	}
 	
 	public static void main(String[] args)
