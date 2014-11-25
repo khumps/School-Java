@@ -153,7 +153,6 @@ public class Display extends JFrame implements ActionListener {
 		this.add(genNum);
 
 		this.add(background);
-		this.pack();
 
 	}
 

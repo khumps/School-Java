@@ -24,8 +24,6 @@ public class Swing2 extends JFrame implements ActionListener {
 		this.add(add);
 		this.add(sub);
 		this.add(info);
-		add.addActionListener(this);
-		sub.addActionListener(this);
 		add.setActionCommand("add");
 		sub.setActionCommand("sub");
 	}

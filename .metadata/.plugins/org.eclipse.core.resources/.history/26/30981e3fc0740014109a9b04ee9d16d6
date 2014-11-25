@@ -10,8 +10,8 @@ public class Display extends JFrame implements ActionListener {
 	static int boardSize = 50;
 	static boolean isRunning = false;
 	static GameOfLife life = new GameOfLife(boardSize);
-	static JLabel genNum = new JLabel("" + life.getGenerationNum());
-	static ArrayList<JButton> cells = new ArrayList<JButton>();
+	final static JLabel genNum = new JLabel("" + life.getGenerationNum());
+	final static ArrayList<JButton> cells = new ArrayList<JButton>();
 
 	Display() {
 
@@ -153,7 +153,6 @@ public class Display extends JFrame implements ActionListener {
 		this.add(genNum);
 
 		this.add(background);
-		this.pack();
 
 	}
 

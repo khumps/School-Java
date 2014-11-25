@@ -24,10 +24,13 @@ public class Swing2 extends JFrame implements ActionListener {
 		this.add(add);
 		this.add(sub);
 		this.add(info);
-		add.addActionListener(this);
-		sub.addActionListener(this);
-		add.setActionCommand("add");
-		sub.setActionCommand("sub");
+		add.addActionListener(new ActionListener() {
+
+		});
+
+		sub.addActionListener(new ActionListener() {
+
+		});
 	}
 
 	/**
@@ -48,15 +51,6 @@ public class Swing2 extends JFrame implements ActionListener {
 			if (numClicks == 1)
 				info.setText("You have clicked this button " + numClicks
 						+ " time!");
-		}
-		
-		if(command.equals("sub"))
-		{
-			numClicks--;
-			
-			info.setText("You have clicked this button " + numClicks + " times!");
-			if(numClicks == 1)
-				info.setText("You have clicked this button " + numClicks + " time!");
 		}
 
 	}

@@ -1,0 +1,18 @@
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
+
+public class DisplayNotFail {
+	
+	DisplayNotFail()
+	{
+	int borderWidth = 1;
+	static int boardSize = 50;
+	static boolean isRunning = false;
+	static GameOfLife life = new GameOfLife(boardSize);
+	static JLabel genNum = new JLabel("" + life.getGenerationNum());
+	static ArrayList<JButton> cells = new ArrayList<JButton>();
+	}
+}
