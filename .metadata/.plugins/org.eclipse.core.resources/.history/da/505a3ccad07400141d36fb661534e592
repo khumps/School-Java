@@ -20,7 +20,7 @@ public class DisplayNotFail extends JFrame implements ActionListener {
 		super.paintComponents(g);
 		for(int i = 1; boxSize * i < height; i+= boxSize + 1)
 		{
-			int start = i * (height / boxSize);
+			int start = i * (height / boxSize)
 		}
 	}
 	DisplayNotFail() {

@@ -12,17 +12,6 @@ public class DisplayNotFail extends JFrame implements ActionListener {
 	JButton prevGen = new JButton("Previous Generation");
 	JPanel board = new JPanel();
 
-	public void paintComponent(Graphics g)
-	{
-		int width = getWidth();
-		int height = getHeight();
-		int boxSize = 10;
-		super.paintComponents(g);
-		for(int i = 1; boxSize * i < height; i+= boxSize + 1)
-		{
-			int start = i * (height / boxSize);
-		}
-	}
 	DisplayNotFail() {
 		board.setPreferredSize(new Dimension(500, 500));
 		int borderWidth = 1;
