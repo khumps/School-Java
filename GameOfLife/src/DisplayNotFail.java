@@ -8,6 +8,7 @@ import java.awt.event.*;
 
 
 public class DisplayNotFail extends JFrame implements ActionListener {
+	boolean isRunning = false;
 	
 	DisplayNotFail()
 	{
@@ -21,9 +22,18 @@ public class DisplayNotFail extends JFrame implements ActionListener {
 	JButton play = new JButton("Start");
 	JButton nextGen = new JButton("Next Generation");
 	JButton prevGen = new JButton("Previous Generation");
+	
+	this.add(prevGen);
+	this.add(nextGen);
+	this.add(play);
 	this.pack();
 	
 	
+	}
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		
 	}
 	
 	public static void main(String[] args)
