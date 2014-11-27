@@ -1949,3 +1949,40 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2014-11-27 10:00:09.058 -----------------------------------------------
+eclipse.buildId=debbuild
+java.version=1.7.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86
+
+!ENTRY org.eclipse.team.core 4 0 2014-11-27 10:00:28.686
+!MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project GameOfLife.
+!STACK 1
+org.eclipse.team.core.TeamException: Could not instantiate provider org.eclipse.egit.core.GitProvider for project GameOfLife.
+	at org.eclipse.team.core.RepositoryProvider.mapNewProvider(RepositoryProvider.java:165)
+	at org.eclipse.team.core.RepositoryProvider.mapExistingProvider(RepositoryProvider.java:235)
+	at org.eclipse.team.core.RepositoryProvider.getProvider(RepositoryProvider.java:507)
+	at org.eclipse.team.internal.core.TeamHookDispatcher.getProvider(TeamHookDispatcher.java:97)
+	at org.eclipse.team.internal.core.TeamHookDispatcher.getRuleFactory(TeamHookDispatcher.java:105)
+	at org.eclipse.core.internal.resources.Rules.factoryFor(Rules.java:93)
+	at org.eclipse.core.internal.resources.Rules.modifyRule(Rules.java:145)
+	at org.eclipse.core.internal.resources.Project.touch(Project.java:1401)
+	at org.eclipse.jdt.internal.core.SetContainerOperation.executeOperation(SetContainerOperation.java:115)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:793)
+	at org.eclipse.jdt.core.JavaCore.setClasspathContainer(JavaCore.java:5269)
+	at org.eclipse.jdt.internal.launching.JREContainerInitializer.initialize(JREContainerInitializer.java:108)
+	at org.eclipse.jdt.internal.launching.LaunchingPlugin$VMChanges.rebind(LaunchingPlugin.java:360)
+	at org.eclipse.jdt.internal.launching.LaunchingPlugin$VMChanges.access$0(LaunchingPlugin.java:294)
+	at org.eclipse.jdt.internal.launching.LaunchingPlugin$VMChanges$1.run(LaunchingPlugin.java:280)
+	at org.eclipse.jdt.internal.core.BatchOperation.executeOperation(BatchOperation.java:39)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:728)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2344)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:5204)
+	at org.eclipse.jdt.internal.launching.LaunchingPlugin$VMChanges.doit(LaunchingPlugin.java:284)
+	at org.eclipse.jdt.internal.launching.LaunchingPlugin$JREUpdateJob.run(LaunchingPlugin.java:381)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.team.core 4 0 2014-11-27 10:00:28.708
+!MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project GameOfLife.
