@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="312" key="DIALOG_WIDTH"/>
-		<item value="138" key="DIALOG_Y_ORIGIN"/>
-		<item value="438" key="DIALOG_HEIGHT"/>
-		<item value="712" key="DIALOG_X_ORIGIN"/>
-		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item value="true" key="wrap"/>
 		<item value="false" key="isRegEx"/>
+		<item value="JMenuItem" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
-		<item value="" key="selection"/>
 		<list key="findhistory">
+			<item value="JButton"/>
 			<item value="point"/>
 			<item value="genNum"/>
 			<item value="prevGen"/>
@@ -23,7 +17,15 @@
 			<item value="print"/>
 		</list>
 		<list key="replacehistory">
+			<item value="JMenuItem"/>
 			<item value="a set of data"/>
 		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="305" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="442" key="DIALOG_HEIGHT"/>
+		<item value="138" key="DIALOG_Y_ORIGIN"/>
+		<item value="712" key="DIALOG_X_ORIGIN"/>
 	</section>
 </section>
