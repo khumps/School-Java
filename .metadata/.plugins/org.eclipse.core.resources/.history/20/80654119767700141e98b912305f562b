@@ -24,10 +24,8 @@ public class DisplayNotFail extends JFrame implements ActionListener, MouseListe
 	int y;
 	GameOfLife life = new GameOfLife(boardSize);
 	Rectangle[][] cells = new Rectangle[boardSize][boardSize];
-	Insets inset;
 
 	public void paint(Graphics g) {
-		inset = getInsets();
 		super.paint(g);
 		Graphics2D g2 = (Graphics2D) g;
 		int width = board.getWidth();
