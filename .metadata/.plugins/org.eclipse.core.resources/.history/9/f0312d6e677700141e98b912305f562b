@@ -1,0 +1,125 @@
+import java.util.ArrayList;
+
+import javax.swing.*;
+
+import java.awt.*;
+import java.awt.event.*;
+
+public class DisplayNotFail extends JFrame implements ActionListener,
+		MouseListener {
+	boolean isRunning = false;
+	JButton play = new JButton("Start");
+	JButton nextGen = new JButton("Next Generation");
+	JButton prevGen = new JButton("Previous Generation");
+	JPanel board = new JPanel();
+	
+	int row = 0;
+	int col = 0;
+	int width = board.getWidth();
+	int height = board.getHeight();
+	int boxSize = 15;
+	int boardSize = 25;
+	GameOfLife life = new GameOfLife(boardSize);
+	//Shape[][] cells = new Shape[boardSize][boardSize];
+
+		public void paint(Graphics g) {
+		Graphics2D g2 = (Graphics2D) g;
+		int width = board.getWidth();
+		int height = board.getHeight();
+		int boxSize = 15;
+		life.getBoard().board[0][1] = Board.state.Alive;
+		int x = 0;
+		int y = 0;
+		for (int across = 0; across < (boardSize * boxSize); across += boxSize) {
+			for (int down = 0; down < (boardSize * boxSize); down += boxSize) {
+					g2.drawRect(across, down, across + boxSize, down + boxSize);
+
+				y++;
+				row++;}
+			}
+			x++;
+			col++;
+		}
+
+	DisplayNotFail() {
+		life.getBoard().paint(null);
+		board.setPreferredSize(new Dimension(500, 500));
+		board.setLayout(null);
+		board.setLocation(100, 100);
+		board.addMouseListener(this);
+		int borderWidth = 1;
+		int boardSize = 50;
+		boolean isRunning = false;
+		GameOfLife life = new GameOfLife(boardSize);
+		JLabel genNum = new JLabel("" + life.getGenerationNum());
+		ArrayList<JButton> cells = new ArrayList<JButton>();
+		this.setPreferredSize(new Dimension(1000, 1000));
+		play.addActionListener(this);
+		play.setActionCommand("play");
+		nextGen.addActionListener(this);
+		nextGen.setActionCommand("next");
+		prevGen.addActionListener(this);
+		prevGen.setActionCommand("prev");
+		board.repaint();
+		this.add(board);
+		// this.add(prevGen);
+		// this.add(nextGen);
+		// this.add(play);
+		this.pack();
+
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		/*
+		 * String command = e.getActionCommand(); if(command.equals("play")) {
+		 * if(isRunning = false) play.setText("Pause");
+		 * 
+		 * if(isRunning == false) play.setText("Play");
+		 * 
+		 * } if(command.equals("next")) {
+		 * 
+		 * } {
+		 * 
+		 * } if(command.equals("prev")) {
+		 * 
+		 * }
+		 */
+	}
+
+	public static void main(String[] args) {
+		DisplayNotFail test = new DisplayNotFail();
+		test.setVisible(true);
+
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		int x = e.getX() / boxSize;
+		int y = e.getY() / boxSize;
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+
+	}
+}

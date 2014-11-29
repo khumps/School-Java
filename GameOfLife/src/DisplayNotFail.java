@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+
 public class DisplayNotFail extends JFrame implements ActionListener, MouseListener {
 	boolean isRunning = false;
 	JButton play = new JButton("Start");
@@ -15,37 +16,43 @@ public class DisplayNotFail extends JFrame implements ActionListener, MouseListe
 	int col = 0;
 	int width = board.getWidth();
 	int height = board.getHeight();
-	int boxSize = 15;
-	int boardSize = 25;
+	final int boxSize = 20;
+	final int boardSize = 30;
+	final int boardOffsetX = 200;
+	final int boardOffsetY = 100;
+	int x;
+	int y;
 	GameOfLife life = new GameOfLife(boardSize);
-	Shape[][] cells = new Shape[boardSize][boardSize];
-	public void paint(Graphics g)
-	{
+	Rectangle[][] cells = new Rectangle[boardSize][boardSize];
+
+	public void paint(Graphics g) {
+		super.paint(g);
+		Graphics2D g2 = (Graphics2D) g;
 		int width = board.getWidth();
 		int height = board.getHeight();
-		int boxSize = 15;
-		life.getBoard().board[0][1] = 1;
-		
-		for(int across = 0; across < width; across += boxSize)
-		{
-			for(int down = 0; down < height; down += boxSize)
-			{
-				if(life.getBoard().getTile(across / boxSize, down / boxSize) == 0)
-				{
-				//cells[across / boardSize][down / boxSize] = new Rectangle(across, down, across + boxSize, down + boxSize);
-				g.drawRect(across, down, across + boxSize, down + boxSize);
+		int x = 0;
+		int y = 0;
+		for (int across = boardOffsetX; across < boardOffsetX + (boardSize * boxSize); across += boxSize) {
+
+			
+			for (int down = boardOffsetY; down < boardOffsetY + (boardSize * boxSize); down += boxSize) {
+				if(life.getBoard().board[x][y] == 0){
+				cells[x][y] = new Rectangle(across, down, boxSize, boxSize);
+						g2.drawRect(across, down, boxSize, boxSize);
 				}
 				else
 				{
-					//cells[across / boardSize][down / boxSize] = new Rectangle(across, down, across + boxSize, down + boxSize);
-					g.fillRect(across, down, across + boxSize, down + boxSize);
-				}
-				
-				row++;
+					cells[x][y] = new Rectangle(across, down, boxSize, boxSize);
+							g2.fillRect(across, down, boxSize, boxSize);
 			}
-			col++;
+				y++;
+				}
+			y = 0;
+			x++;
+			
 		}
 	}
+
 	DisplayNotFail() {
 		board.setPreferredSize(new Dimension(500, 500));
 		board.setLayout(null);
@@ -66,36 +73,28 @@ public class DisplayNotFail extends JFrame implements ActionListener, MouseListe
 		prevGen.setActionCommand("prev");
 		board.repaint();
 		this.add(board);
-		//this.add(prevGen);
-		//this.add(nextGen);
-		//this.add(play);
+		// this.add(prevGen);
+		// this.add(nextGen);
+		// this.add(play);
 		this.pack();
 
 	}
 
-	public void actionPerformed(ActionEvent e)
-	{
-/*		String command = e.getActionCommand();
-		if(command.equals("play"))
-		{
-			if(isRunning = false)
-			play.setText("Pause");
-			
-			if(isRunning == false)
-				play.setText("Play");
-			
-		}
-		if(command.equals("next"))
-				{
-			
-				}
-		{
-			
-		}
-		if(command.equals("prev"))
-		{
-			
-		}*/
+	public void actionPerformed(ActionEvent e) {
+		/*
+		 * String command = e.getActionCommand(); if(command.equals("play")) {
+		 * if(isRunning = false) play.setText("Pause");
+		 * 
+		 * if(isRunning == false) play.setText("Play");
+		 * 
+		 * } if(command.equals("next")) {
+		 * 
+		 * } {
+		 * 
+		 * } if(command.equals("prev")) {
+		 * 
+		 * }
+		 */
 	}
 
 	public static void main(String[] args) {
@@ -103,31 +102,37 @@ public class DisplayNotFail extends JFrame implements ActionListener, MouseListe
 		test.setVisible(true);
 
 	}
+
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		int x = e.getX() / boxSize;
-		int y = e.getY() / boxSize;
-		
-		
 	}
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 	@Override
-	public void mousePressed(MouseEvent arg0) {
+	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		int x = (e.getX() - boardOffsetX) / boxSize;
+		int y = (e.getY() - boardOffsetY) / boxSize;
+		System.out.println(x + " " + y);
+		if (life.getBoard().board[x][y] == 0)
+		life.getBoard().board[x][y] = 1;
+		else life.getBoard().board[x][y] = 0;
+		this.repaint();
 	}
+
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

@@ -1,0 +1,13 @@
+import java.awt.event.MouseListener;
+
+import javax.swing.JPanel;
+
+
+public class GameBoard extends JPanel implements MouseListener{
+
+	public void paint(Graphics g)
+	{
+		super.paint(g);
+		
+	}
+}

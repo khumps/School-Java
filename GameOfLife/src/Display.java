@@ -22,23 +22,6 @@ public class Display extends JFrame implements ActionListener {
 		JTextField gen = new JTextField();
 		JButton clear = new JButton();
 		JButton genFive = new JButton();
-		final JButton run = new JButton();
-		run.setSize(150, 30);
-		run.setLocation(400, 20);
-		run.setText("Start");
-		run.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent b) {
-				if (isRunning == false) {
-					isRunning = true;
-					run.setText("Stop");
-				}
-				if (isRunning == true) {
-					isRunning = false;
-					run.setText("Start");
-				}
-
-			}
-		});
 		JPanel background = new JPanel();
 		background.setBackground(Color.WHITE);
 		JPanel game = new JPanel();
@@ -149,7 +132,6 @@ public class Display extends JFrame implements ActionListener {
 		this.add(nextGen);
 		this.add(clear);
 		this.add(genFive);
-		this.add(run);
 		this.add(genNum);
 
 		this.add(background);

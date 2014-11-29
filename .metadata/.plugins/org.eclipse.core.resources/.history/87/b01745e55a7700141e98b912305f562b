@@ -1,0 +1,16 @@
+public class TicTacToe {
+//	public enum tile{Empty,X,O};
+
+	Board board = new Board(3);
+	
+	public TicTacToe()
+	{		
+	}
+
+	public static void main(String[] args) {
+		TicTacToe game = new TicTacToe();
+		game.board.setTile(1, 1, Board.tile.X);
+		
+		System.out.println(game.board.toString());
+	}
+}
