@@ -32,6 +32,7 @@ public class DisplayNotFail extends JFrame implements ActionListener,
 	Timer timer = new Timer(Integer.parseInt(timerLength.getText()), this);
 
 	public void paint(Graphics g) {
+		
 		inset = getInsets();
 		super.paint(g);
 		Graphics2D g2 = (Graphics2D) g;
@@ -61,6 +62,7 @@ public class DisplayNotFail extends JFrame implements ActionListener,
 	}
 
 	DisplayNotFail() {
+		
 		timer.setRepeats(true);
 		timer.addActionListener(this);
 		timer.setActionCommand("timer");
@@ -74,7 +76,6 @@ public class DisplayNotFail extends JFrame implements ActionListener,
 		JLabel genNum = new JLabel("" + life.getGenerationNum());
 		this.setPreferredSize(new Dimension(1000, 1000));
 		//play.setLayout(null);
-		timerLength.setk
 		play.setSize(button);
 		play.addActionListener(this);
 		play.setActionCommand("play");
