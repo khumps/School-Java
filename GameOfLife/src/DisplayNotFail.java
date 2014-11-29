@@ -5,12 +5,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-
-public class DisplayNotFail extends JFrame implements ActionListener, MouseListener {
+public class DisplayNotFail extends JFrame implements ActionListener,
+		MouseListener {
 	boolean isRunning = false;
-	JButton play = new JButton("Start");
-	JButton nextGen = new JButton("Next Generation");
-	JButton prevGen = new JButton("Previous Generation");
+	JPanel buttonBoard = new JPanel();
+	JMenuItem play = new JMenuItem("Start");
+	JMenuItem nextGen = new JMenuItem("Next Generation");
+	JMenuItem prevGen = new JMenuItem("Previous Generation");
 	JPanel board = new JPanel();
 	int row = 0;
 	int col = 0;
@@ -34,39 +35,46 @@ public class DisplayNotFail extends JFrame implements ActionListener, MouseListe
 		int height = board.getHeight();
 		int x = 0;
 		int y = 0;
-		for (int across = boardOffsetX; across < boardOffsetX + (boardSize * boxSize); across += boxSize) {
+		for (int across = boardOffsetX; across < boardOffsetX
+				+ (boardSize * boxSize); across += boxSize) {
 
-			
-			for (int down = boardOffsetY; down < boardOffsetY + (boardSize * boxSize); down += boxSize) {
-				if(life.getBoard().board[x][y] == 0){
-				cells[x][y] = new Rectangle(across, down, boxSize, boxSize);
-						g2.drawRect(across, down, boxSize, boxSize);
-				}
-				else
-				{
+			for (int down = boardOffsetY; down < boardOffsetY
+					+ (boardSize * boxSize); down += boxSize) {
+				if (life.getBoard().board[x][y] == 0) {
 					cells[x][y] = new Rectangle(across, down, boxSize, boxSize);
-							g2.fillRect(across, down, boxSize, boxSize);
-			}
-				y++;
+					g2.drawRect(across, down, boxSize, boxSize);
+				} else {
+					cells[x][y] = new Rectangle(across, down, boxSize, boxSize);
+					// g2.drawRect(across, down, boxSize, boxSize);
+					g2.fillRect(across, down, boxSize, boxSize);
 				}
+				y++;
+			}
 			y = 0;
 			x++;
-			
+
 		}
 	}
 
 	DisplayNotFail() {
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		buttonBoard.setPreferredSize(new Dimension(this.getWidth(), 100));
+		buttonBoard.setLocation(20, 100);
+		Dimension button = new Dimension(100,30);
+		GridLayout grid = new GridLayout(0,10);
+		//buttonBoard.setLayout(grid);
+		
 		board.setPreferredSize(new Dimension(500, 500));
-		board.setLayout(null);
-		board.setLocation(100, 100);
+
 		board.addMouseListener(this);
 		int borderWidth = 1;
 		int boardSize = 50;
 		boolean isRunning = false;
 		GameOfLife life = new GameOfLife(boardSize);
 		JLabel genNum = new JLabel("" + life.getGenerationNum());
-		ArrayList<JButton> cells = new ArrayList<JButton>();
 		this.setPreferredSize(new Dimension(1000, 1000));
+		play.setLayout(null);
+		play.setSize(button);
 		play.addActionListener(this);
 		play.setActionCommand("play");
 		nextGen.addActionListener(this);
@@ -74,29 +82,38 @@ public class DisplayNotFail extends JFrame implements ActionListener, MouseListe
 		prevGen.addActionListener(this);
 		prevGen.setActionCommand("prev");
 		board.repaint();
-		this.add(board);
+		buttonBoard.add(board);
 		// this.add(prevGen);
 		// this.add(nextGen);
-		// this.add(play);
+		buttonBoard.add(play);
+		this.add(buttonBoard);
 		this.pack();
 
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		/*
-		 * String command = e.getActionCommand(); if(command.equals("play")) {
-		 * if(isRunning = false) play.setText("Pause");
-		 * 
-		 * if(isRunning == false) play.setText("Play");
-		 * 
-		 * } if(command.equals("next")) {
-		 * 
-		 * } {
-		 * 
-		 * } if(command.equals("prev")) {
-		 * 
-		 * }
-		 */
+
+		String command = e.getActionCommand();
+		if (command.equals("play")) {
+			
+			if(isRunning)	
+			{
+				isRunning = false;
+				play.setText("Start");
+			}
+				
+			else
+			{
+				isRunning = true;
+				play.setText("Stop");
+			}
+		}
+		if (command.equals("next")) {
+
+		}
+		if (command.equals("prev")) {
+		}
+
 	}
 
 	public static void main(String[] args) {
@@ -108,6 +125,7 @@ public class DisplayNotFail extends JFrame implements ActionListener, MouseListe
 	@Override
 	public void mouseClicked(MouseEvent e) {
 	}
+
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
@@ -123,13 +141,16 @@ public class DisplayNotFail extends JFrame implements ActionListener, MouseListe
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		int x = (e.getX() - boardOffsetX) / boxSize;
-		int y = (e.getY() - boardOffsetY) / boxSize;
-		System.out.println(x + " " + y);
-		if (life.getBoard().board[x][y] == 0)
-		life.getBoard().board[x][y] = 1;
-		else life.getBoard().board[x][y] = 0;
-		this.repaint();
+		int x = (e.getX() - boardOffsetX + inset.left) / boxSize;
+		int y = (e.getY() - boardOffsetY + inset.top) / boxSize;
+		if (x < boardSize && x > -1 && y < boardSize && y > -1) {
+			System.out.println(x + " " + y);
+			if (life.getBoard().board[x][y] == 0)
+				life.getBoard().board[x][y] = 1;
+			else
+				life.getBoard().board[x][y] = 0;
+			this.repaint();
+		}
 	}
 
 	@Override
