@@ -13,7 +13,6 @@ public class DisplayNotFail extends JFrame implements ActionListener,
 	JMenuItem play = new JMenuItem("Start");
 	JMenuItem nextGen = new JMenuItem("Next Generation");
 	JMenuItem prevGen = new JMenuItem("Previous Generation");
-	JMenuItem clear = new JMenuItem("Clear Board");
 	JPanel board = new JPanel();
 	int row = 0;
 	int col = 0;
@@ -28,8 +27,6 @@ public class DisplayNotFail extends JFrame implements ActionListener,
 	GameOfLife life = new GameOfLife(boardSize);
 	Rectangle[][] cells = new Rectangle[boardSize][boardSize];
 	Insets inset;
-	JTextField timerLength = new JTextField("150", 5);
-	Timer timer = new Timer(Integer.parseInt(timerLength.getText()), this);
 
 	public void paint(Graphics g) {
 		inset = getInsets();
@@ -61,11 +58,9 @@ public class DisplayNotFail extends JFrame implements ActionListener,
 	}
 
 	DisplayNotFail() {
-		timer.setRepeats(true);
-		timer.addActionListener(this);
-		timer.setActionCommand("timer");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		Dimension button = new Dimension(100,30);
+		board.setPreferredSize(new Dimension(500, 500));
 		board.addMouseListener(this);
 		int borderWidth = 1;
 		int boardSize = 50;
@@ -73,8 +68,7 @@ public class DisplayNotFail extends JFrame implements ActionListener,
 		GameOfLife life = new GameOfLife(boardSize);
 		JLabel genNum = new JLabel("" + life.getGenerationNum());
 		this.setPreferredSize(new Dimension(1000, 1000));
-		//play.setLayout(null);
-		timerLength.setk
+		play.setLayout(null);
 		play.setSize(button);
 		play.addActionListener(this);
 		play.setActionCommand("play");
@@ -82,14 +76,10 @@ public class DisplayNotFail extends JFrame implements ActionListener,
 		nextGen.setActionCommand("next");
 		prevGen.addActionListener(this);
 		prevGen.setActionCommand("prev");
-		clear.setSize(button);
-		clear.addActionListener(this);
-		clear.setActionCommand("clear");
 		this.add(board);
 		menu.add(play);
 		menu.add(prevGen);
 		menu.add(nextGen);
-		menu.add(clear);
 		this.setJMenuBar(menu);
 		this.pack();
 
@@ -102,16 +92,20 @@ public class DisplayNotFail extends JFrame implements ActionListener,
 			
 			if(isRunning)
 			{
-				timer.stop();
 				isRunning = false;
 				play.setText("Start");
+				board.revalidate();
+				board.repaint();
+
 			}
 				
 			else
 			{
 				isRunning = true;
 				play.setText("Stop");
-				timer.start();
+				life.nextGeneration();
+				board.repaint();
+				board.repaint();
 			}
 		}
 		if (command.equals("next")) {
@@ -119,15 +113,6 @@ public class DisplayNotFail extends JFrame implements ActionListener,
 		}
 		if (command.equals("prev")) {
 		}
-		if(command.equals("timer"))
-		{
-			life.nextGeneration();
-			this.repaint();
-			timer.start();
-		}
-		if(command.equals("clear"))
-			life.getBoard().clear();
-		this.repaint();
 
 	}
 
