@@ -13,6 +13,7 @@ public class GameOfLife {
 	private ArrayList<Board> boards = new ArrayList<Board>();
 	private Board board;
 	private Board modifiedBoard;
+	private int generationNum = 0;
 
 	public Board getBoard(int i) {
 		return board;
@@ -26,14 +27,11 @@ public class GameOfLife {
 		return modifiedBoard;
 	}
 
-	private int generationNum = 0;
-
 	public GameOfLife(int rows, int cols) {
 		board = new Board(rows, cols);
 		for (int i = 0; i < this.board.board.length; i++) {
 			for (int j = 0; j < this.board.board[0].length; j++) {
 				board.board[i][j] = 0;
-
 			}
 		}
 	}
@@ -74,13 +72,11 @@ public class GameOfLife {
 
 	private boolean willLive(int row, int col) {
 		if (this.isAlive(row, col)) {
-			if (this.countNeighbors(row, col) < 2
-					|| this.countNeighbors(row, col) > 3) {
+			if (this.countNeighbors(row, col) < 2 || this.countNeighbors(row, col) > 3) {
 				return false;
 			}
 			return true;
 		}
-
 		if (this.countNeighbors(row, col) == 3) {
 			return true;
 		}
@@ -119,7 +115,6 @@ public class GameOfLife {
 					str += " - ";
 				else
 					str += " * ";
-
 			}
 			str += "\n";
 		}
@@ -129,8 +124,8 @@ public class GameOfLife {
 	public static void main(String[] args) {
 		GameOfLife game = new GameOfLife(10);
 		for (int i = 0; i < 100; i++)
-			game.board.setTile((int) (Math.random() * 5),
-					(int) (Math.random() * 5), (int) (Math.random() * 2));
+			game.board.setTile((int) (Math.random() * 5), (int) (Math.random() * 5),
+					(int) (Math.random() * 2));
 		/*
 		 * game.board.setTile(1, 1, 1); game.board.setTile(0, 2, 1);
 		 * game.board.setTile(1, 3, 1); game.board.setTile(1, 0, 1);

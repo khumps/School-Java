@@ -1,8 +1,9 @@
 import javax.swing.*;
+import javax.swing.event.ChangeListener;
 
 import java.awt.Dimension;
 import java.awt.event.*;
-public class Display extends JFrame implements ActionListener, MouseListener{
+public class Display extends JFrame implements ActionListener, MouseListener, ChangeListener{
 	boolean isRunning = false;
 	JMenuBar menu = new JMenuBar();
 	JPanel buttonBoard = new JPanel();
@@ -11,13 +12,21 @@ public class Display extends JFrame implements ActionListener, MouseListener{
 	JMenuItem prevGen = new JMenuItem("Previous Generation");
 	JMenuItem clear = new JMenuItem("Clear Board");
 	static JTextField timerLength = new JTextField("100", 10);
+	JButton setTimer = new JButton("Set");
 	Timer timer = new Timer(Integer.parseInt(Display.timerLength.getText()), this);
 	LifeBoard game = new LifeBoard();
+	JLabel genNum = new JLabel(Integer.toString((game.life.getGenerationNum())));
+	JSlider speed = new JSlider(JSlider.HORIZONTAL, 0, 1000, 150 );
 
 	Display()
 	{
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);;
-	
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+		speed.setMajorTickSpacing(250);
+		speed.setMinorTickSpacing(125);
+		speed.setPaintTicks(true);
+		speed.setPaintLabels(true);
+		speed.addChangeListener(this);
 	game.addMouseListener(this);
 	this.add(game);
 	timer.setRepeats(true);
@@ -27,10 +36,10 @@ public class Display extends JFrame implements ActionListener, MouseListener{
 	int borderWidth = 1;
 	int boardSize = 50;
 	boolean isRunning = false;
-	GameOfLife life = new GameOfLife(boardSize);
-	JLabel genNum = new JLabel("" + life.getGenerationNum());
 	this.setPreferredSize(new Dimension(1000, 1000));
-	//play.setLayout(null);
+	setTimer.addActionListener(this);
+	setTimer.setActionCommand("setTimer");
+	setTimer.setSize(button);
 	play.setSize(button);
 	play.addActionListener(this);
 	play.setActionCommand("play");
@@ -45,6 +54,8 @@ public class Display extends JFrame implements ActionListener, MouseListener{
 	menu.add(prevGen);
 	menu.add(nextGen);
 	menu.add(clear);
+	menu.add(speed);
+	menu.add(genNum);
 	this.setJMenuBar(menu);
 	this.pack();
 	}
@@ -117,9 +128,15 @@ public class Display extends JFrame implements ActionListener, MouseListener{
 		}
 		if(command.equals("timer"))
 		{
+			genNum.setText(Integer.toString(game.life.getGenerationNum()));
 			game.life.nextGeneration();
 			
-			timer.start();
+			
+		}
+		if(command.equals("setTimer"))
+		{
+			String time = timerLength.getText();
+			timer.setDelay(Integer.parseInt(time));
 		}
 		if(command.equals("clear"))
 			game.life.getBoard().clear();

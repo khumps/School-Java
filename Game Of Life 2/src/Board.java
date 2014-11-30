@@ -2,7 +2,6 @@ public class Board {
 	int[][] board;
 	int numRows;
 	int numCols;
-
 	// Creates a rectangular gameboard with dimentions rows * cols
 	public Board(int rows, int cols) {
 		board = new int[rows][cols];
