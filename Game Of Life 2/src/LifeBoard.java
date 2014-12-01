@@ -11,6 +11,16 @@ import java.awt.event.MouseListener;
 import javax.swing.*;
 
 public class LifeBoard extends JPanel implements ActionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5013575821528934113L;
+	/**
+	 * 
+	 */
+	/**
+	 * 
+	 */
 	boolean isRunning = false;
 	final int boxSize = 20;
 	final int boardSize = 50;
@@ -47,7 +57,6 @@ public class LifeBoard extends JPanel implements ActionListener{
 	LifeBoard() {
 		this.setPreferredSize(new Dimension((boardSize * boxSize) * 2, (boardSize * boxSize) * 2));
 	}
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub	
 	}

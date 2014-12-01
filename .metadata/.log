@@ -5698,3 +5698,48 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2014-12-01 11:45:44.728 -----------------------------------------------
+eclipse.buildId=debbuild
+java.version=1.7.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86
+
+!ENTRY org.eclipse.core.resources 2 10035 2014-12-01 11:46:04.158
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.team.core 4 0 2014-12-01 11:46:07.491
+!MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project Tic Tac Toe.
+!STACK 1
+org.eclipse.team.core.TeamException: Could not instantiate provider org.eclipse.egit.core.GitProvider for project Tic Tac Toe.
+	at org.eclipse.team.core.RepositoryProvider.mapNewProvider(RepositoryProvider.java:165)
+	at org.eclipse.team.core.RepositoryProvider.mapExistingProvider(RepositoryProvider.java:235)
+	at org.eclipse.team.core.RepositoryProvider.getProvider(RepositoryProvider.java:507)
+	at org.eclipse.team.internal.core.TeamHookDispatcher.getProvider(TeamHookDispatcher.java:97)
+	at org.eclipse.team.internal.core.TeamHookDispatcher.getRuleFactory(TeamHookDispatcher.java:105)
+	at org.eclipse.core.internal.resources.Rules.factoryFor(Rules.java:93)
+	at org.eclipse.core.internal.resources.Rules.refreshRule(Rules.java:166)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1689)
+	at org.eclipse.core.internal.refresh.RefreshJob.runInWorkspace(RefreshJob.java:167)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.team.core 4 0 2014-12-01 11:46:07.496
+!MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project Tic Tac Toe.
+
+!ENTRY org.eclipse.team.core 4 0 2014-12-01 11:46:07.576
+!MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project Game Of Life 2.
+!STACK 1
+org.eclipse.team.core.TeamException: Could not instantiate provider org.eclipse.egit.core.GitProvider for project Game Of Life 2.
+	at org.eclipse.team.core.RepositoryProvider.mapNewProvider(RepositoryProvider.java:165)
+	at org.eclipse.team.core.RepositoryProvider.mapExistingProvider(RepositoryProvider.java:235)
+	at org.eclipse.team.core.RepositoryProvider.getProvider(RepositoryProvider.java:507)
+	at org.eclipse.team.internal.core.TeamHookDispatcher.getProvider(TeamHookDispatcher.java:97)
+	at org.eclipse.team.internal.core.TeamHookDispatcher.getRuleFactory(TeamHookDispatcher.java:105)
+	at org.eclipse.core.internal.resources.Rules.factoryFor(Rules.java:93)
+	at org.eclipse.core.internal.resources.Rules.refreshRule(Rules.java:166)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1689)
+	at org.eclipse.core.internal.refresh.RefreshJob.runInWorkspace(RefreshJob.java:167)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.team.core 4 0 2014-12-01 11:46:07.589
+!MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project Game Of Life 2.
