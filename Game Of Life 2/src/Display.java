@@ -12,8 +12,8 @@ public class Display extends JFrame implements ActionListener, MouseListener, Ch
 	private static final long serialVersionUID = 6418621600276097961L;
 	boolean isRunning = false;
 	int sliderMin = 0;
-	int sliderMax = 500;
-	int sliderDefault = 100;
+	int sliderMax = 100;
+	int sliderDefault = 50;
 	int timerLength = 100;
 	JMenuBar menu = new JMenuBar();
 	JPanel buttonBoard = new JPanel();
@@ -34,8 +34,8 @@ public class Display extends JFrame implements ActionListener, MouseListener, Ch
 		speed.setMinorTickSpacing(125);
 		speed.setPaintTicks(true);
 		Hashtable labelTable = new Hashtable();
-		labelTable.put( new Integer(sliderMax), new JLabel("Stop") );
-		labelTable.put( new Integer(sliderMin), new JLabel("Fast") );
+		labelTable.put( new Integer(sliderMax), new JLabel("Fast"));
+		labelTable.put( new Integer(sliderMin), new JLabel("Stop"));
 		speed.setLabelTable( labelTable );
 
 		speed.setPaintLabels(true);
@@ -70,7 +70,6 @@ public class Display extends JFrame implements ActionListener, MouseListener, Ch
 	this.setJMenuBar(menu);
 	this.pack();
 	}
-	
 	public static void main(String[] args)
 	{
 		Display test = new Display();
@@ -78,19 +77,11 @@ public class Display extends JFrame implements ActionListener, MouseListener, Ch
 	}
 	public void mouseClicked(MouseEvent e) {
 	}
-
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
 	}
-
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-
 	}
-
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
 		int x = (e.getX() + LifeBoard.inset.left) / game.boxSize;
 		int y = ((e.getY() + LifeBoard.inset.top) / game.boxSize);
 		if (x < game.boardSize && x > -1 && y < game.boardSize && y > -1) {
@@ -102,12 +93,9 @@ public class Display extends JFrame implements ActionListener, MouseListener, Ch
 			this.repaint();
 		}
 	}
-	
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 
+	public void mouseReleased(MouseEvent arg0) {
 	}
-	
 	public void actionPerformed(ActionEvent e) {
 
 		String command = e.getActionCommand();
@@ -136,8 +124,9 @@ public class Display extends JFrame implements ActionListener, MouseListener, Ch
 		}
 		if(command.equals("timer"))
 		{
-			genNum.setText(Integer.toString(game.life.getGenerationNum()));
+			
 			game.life.nextGeneration();
+			genNum.setText(Integer.toString(game.life.getGenerationNum()));
 			this.repaint();
 			
 		}
@@ -152,18 +141,18 @@ public class Display extends JFrame implements ActionListener, MouseListener, Ch
 
 	public void stateChanged(ChangeEvent f) {
 		JSlider source = (JSlider) f.getSource();
+		if(speed.getValueIsAdjusting())
+		{
 		if(isRunning)
 		{
-		timerLength = source.getValue();
+		timerLength = (sliderMax - source.getValue()) * 10;
 		timer.stop();
 		timer.setDelay(timerLength);
 		timer.start();
 		}
-		else
-		{
-			timerLength = source.getValue();
-			timer.setDelay(timerLength);
-		}
+		if(timerLength == sliderMax * 10)
+			timer.stop();
 		
+	}
 	}
 }
