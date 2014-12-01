@@ -5743,3 +5743,49 @@ org.eclipse.team.core.TeamException: Could not instantiate provider org.eclipse.
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
 !SUBENTRY 1 org.eclipse.team.core 4 0 2014-12-01 11:46:07.589
 !MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project Game Of Life 2.
+!SESSION 2014-12-01 17:03:38.972 -----------------------------------------------
+eclipse.buildId=debbuild
+java.version=1.7.0_65
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86
+
+!ENTRY org.eclipse.team.core 4 0 2014-12-01 17:04:23.491
+!MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project Game Of Life 2.
+!STACK 1
+org.eclipse.team.core.TeamException: Could not instantiate provider org.eclipse.egit.core.GitProvider for project Game Of Life 2.
+	at org.eclipse.team.core.RepositoryProvider.mapNewProvider(RepositoryProvider.java:165)
+	at org.eclipse.team.core.RepositoryProvider.mapExistingProvider(RepositoryProvider.java:235)
+	at org.eclipse.team.core.RepositoryProvider.getProvider(RepositoryProvider.java:507)
+	at org.eclipse.team.internal.ccvs.ui.CVSLightweightDecorator.isMappedToCVS(CVSLightweightDecorator.java:192)
+	at org.eclipse.team.internal.ccvs.ui.CVSLightweightDecorator.decorate(CVSLightweightDecorator.java:147)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:263)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:81)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:365)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:347)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.ensureResultCached(DecorationScheduler.java:370)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:330)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.team.core 4 0 2014-12-01 17:04:23.506
+!MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project Game Of Life 2.
+
+!ENTRY org.eclipse.team.core 4 0 2014-12-01 17:04:23.540
+!MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project Tic Tac Toe.
+!STACK 1
+org.eclipse.team.core.TeamException: Could not instantiate provider org.eclipse.egit.core.GitProvider for project Tic Tac Toe.
+	at org.eclipse.team.core.RepositoryProvider.mapNewProvider(RepositoryProvider.java:165)
+	at org.eclipse.team.core.RepositoryProvider.mapExistingProvider(RepositoryProvider.java:235)
+	at org.eclipse.team.core.RepositoryProvider.getProvider(RepositoryProvider.java:507)
+	at org.eclipse.team.internal.ccvs.ui.CVSLightweightDecorator.isMappedToCVS(CVSLightweightDecorator.java:192)
+	at org.eclipse.team.internal.ccvs.ui.CVSLightweightDecorator.decorate(CVSLightweightDecorator.java:147)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorDefinition.decorate(LightweightDecoratorDefinition.java:263)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager$LightweightRunnable.run(LightweightDecoratorManager.java:81)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.decorate(LightweightDecoratorManager.java:365)
+	at org.eclipse.ui.internal.decorators.LightweightDecoratorManager.getDecorations(LightweightDecoratorManager.java:347)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.ensureResultCached(DecorationScheduler.java:370)
+	at org.eclipse.ui.internal.decorators.DecorationScheduler$1.run(DecorationScheduler.java:330)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.team.core 4 0 2014-12-01 17:04:23.541
+!MESSAGE Could not instantiate provider org.eclipse.egit.core.GitProvider for project Tic Tac Toe.
