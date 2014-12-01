@@ -115,7 +115,6 @@ public class Display extends JFrame implements ActionListener, MouseListener, Ch
 			
 			if(isRunning)
 			{
-				timer.stop();
 				isRunning = false;
 				play.setText("Start");
 				timer.stop();
