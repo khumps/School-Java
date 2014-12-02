@@ -23,7 +23,7 @@ public class LifeBoard extends JPanel implements ActionListener{
 	 */
 	boolean isRunning = false;
 	final int boxSize = 20;
-	final int boardSize = 50;
+	final int boardSize = 25;
 	final int boardOffsetX = 200;
 	final int boardOffsetY = 100;
 	int x = 0;

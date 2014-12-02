@@ -42,14 +42,14 @@ public class Display extends JFrame implements ActionListener, MouseListener, Ch
 		speed.addChangeListener(this);
 	game.addMouseListener(this);
 	this.add(game);
-	timer.setRepeats(true);
+	//timer.setRepeats(true);
 	timer.addActionListener(this);
 	timer.setActionCommand("timer");
 	Dimension button = new Dimension(100,30);
 	int borderWidth = 1;
 	int boardSize = 50;
 	boolean isRunning = false;
-	this.setPreferredSize(new Dimension(1000, 1000));
+	this.setPreferredSize(new Dimension(10 * boardSize + 150, 10 * boardSize + 150));
 	play.setSize(button);
 	play.addActionListener(this);
 	play.setActionCommand("play");
