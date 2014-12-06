@@ -32,7 +32,6 @@ public class Display extends JFrame implements ActionListener, MouseListener, Ch
 		speed.setMajorTickSpacing(250);
 		speed.setMinorTickSpacing(125);
 		speed.setPaintTicks(true);
-		//Hashtable code from oracle tutorial
 		Hashtable labelTable = new Hashtable();
 		labelTable.put( new Integer(sliderMax), new JLabel("Fast"));
 		labelTable.put( new Integer(sliderMin), new JLabel("Stop"));
