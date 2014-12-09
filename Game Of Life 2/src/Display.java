@@ -2,17 +2,18 @@
  * The Display for the game of life that combines all the buttons,sliders and the board into one
 */
 
+/* Imports */
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.*;
 import java.util.Hashtable;
 public class Display extends JFrame implements ActionListener, MouseListener, ChangeListener{
-
+	
+	/* Class Data */
 	private static final long serialVersionUID = 6418621600276097961L;
 	boolean isRunning = false;
 	int sliderMin = 0;
