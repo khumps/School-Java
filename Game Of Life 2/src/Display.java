@@ -16,9 +16,10 @@ public class Display extends JFrame implements ActionListener, MouseListener, Ch
 	private static final long serialVersionUID = 6418621600276097961L;
 	boolean isRunning = false;
 	int sliderMin = 0;
-	int sliderMax = 100;
-	int sliderDefault = 50;
+	int sliderMax = 60;
+	int sliderDefault = 30;
 	int timerLength = 100;
+	final int getFPS = 1000;
 	final int boardOffsetX = 25;
 	final int boardOffsetY = 84;
 	JMenuBar menu = new JMenuBar();
@@ -37,16 +38,20 @@ public class Display extends JFrame implements ActionListener, MouseListener, Ch
 	{
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		speed.setMajorTickSpacing(250);
-		speed.setMinorTickSpacing(125);
-		speed.setPaintTicks(true);
+
 		//Hashtable code from oracle tutorial
+		/*
 		@SuppressWarnings("rawtypes")
 		Hashtable labelTable = new Hashtable();
 		labelTable.put( new Integer(sliderMax), new JLabel("Fast"));
 		labelTable.put( new Integer(sliderMin), new JLabel("Stop"));
 		speed.setLabelTable( labelTable );
-
+		*/
+		speed.createStandardLabels(30);
+		speed.setMajorTickSpacing(30);
+		speed.setMinorTickSpacing(10);
+		speed.setPaintTicks(true);
+		
 		speed.setPaintLabels(true);
 		speed.addChangeListener(this);
 	game.addMouseListener(this);
@@ -161,10 +166,9 @@ public class Display extends JFrame implements ActionListener, MouseListener, Ch
 		{
 		if(isRunning)
 		{
-		timerLength = (sliderMax - source.getValue()) * 10;
-		timer.stop();
+		timerLength = getFPS / source.getValue();
 		timer.setDelay(timerLength);
-		timer.start();
+		timer.restart();
 		}
 		if(timerLength == sliderMax * 10)
 			timer.stop();
