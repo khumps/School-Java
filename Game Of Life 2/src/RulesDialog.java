@@ -4,5 +4,6 @@ import java.awt.event.ActionEvent;
 
 public class RulesDialog extends JDialog implements ActionListener
 	{
-	
+		JButton 
+	RulesDialog
 }
