@@ -56,8 +56,6 @@ public class Display extends JFrame implements ActionListener, MouseListener, Ch
 		speed.addChangeListener(this);
 	game.addMouseListener(this);
 	this.add(game);
-	//timer.setRepeats(true);
-	//timer.addActionListener(this);
 	timer.setActionCommand("timer");
 	Dimension button = new Dimension(100,30);
 	int borderWidth = 1;
@@ -159,7 +157,7 @@ public class Display extends JFrame implements ActionListener, MouseListener, Ch
 		this.repaint();
 		}
 	}
-
+	/* Slider Listener */
 	public void stateChanged(ChangeEvent f) {
 		JSlider source = (JSlider) f.getSource();
 		if(speed.getValueIsAdjusting())

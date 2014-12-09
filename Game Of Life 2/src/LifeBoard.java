@@ -1,5 +1,5 @@
 /*
- * This is the physical Board that will be painted on the screen
+ * This is the Board that will be painted on the screen
  */
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,7 +14,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
-public class LifeBoard extends JPanel implements ActionListener{
+public class LifeBoard extends JPanel{
 	/**
 	 * 
 	 */
@@ -67,8 +67,5 @@ public class LifeBoard extends JPanel implements ActionListener{
 	LifeBoard() {
 		setPreferredSize(pBoard);
 		//setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-	}
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub	
 	}
 }
