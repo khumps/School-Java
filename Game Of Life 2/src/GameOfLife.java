@@ -123,17 +123,11 @@ public class GameOfLife {
 
 	public static void main(String[] args) {
 		GameOfLife game = new GameOfLife(10);
-		for (int i = 0; i < 100; i++)
-			game.board.setTile((int) (Math.random() * 5), (int) (Math.random() * 5),
-					(int) (Math.random() * 2));
-		/*
-		 * game.board.setTile(1, 1, 1); game.board.setTile(0, 2, 1);
-		 * game.board.setTile(1, 3, 1); game.board.setTile(1, 0, 1);
-		 * game.board.setTile(1, 2, 1);
-		 */
+		  game.board.setTile(1, 1, 1); game.board.setTile(0, 2, 1);
+		  game.board.setTile(1, 3, 1); game.board.setTile(1, 0, 1);
+		  game.board.setTile(1, 2, 1);
+
 		System.out.println(game.toString());
-		// System.out.println("numNeighbors" + game.countNeighbors(1, 2));
-		// System.out.println(game.board.getTile(0, 1));
 		game.nextGeneration();
 		System.out.println(game.toString());
 		game.nextGeneration();
