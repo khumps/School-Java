@@ -1,18 +1,14 @@
 import java.util.ArrayList;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
-
-import javax.swing.*;
+import java.util.Random;
 
 public class GameOfLife {
 
 	private ArrayList<Board> boards = new ArrayList<Board>();
 	private Board board;
 	private Board modifiedBoard;
+	int willBecomeAlive = 3;
+	int isOverCrowded = 4;
+	int isLonely = 1;
 	private int generationNum = 0;
 
 	public Board getBoard(int i) {
@@ -72,12 +68,12 @@ public class GameOfLife {
 
 	private boolean willLive(int row, int col) {
 		if (this.isAlive(row, col)) {
-			if (this.countNeighbors(row, col) < 2 || this.countNeighbors(row, col) > 3) {
+			if (this.countNeighbors(row, col) <= isLonely || this.countNeighbors(row, col) >= isOverCrowded) {
 				return false;
 			}
 			return true;
 		}
-		if (this.countNeighbors(row, col) == 3) {
+		if (this.countNeighbors(row, col) == willBecomeAlive) {
 			return true;
 		}
 		return false;
@@ -106,6 +102,39 @@ public class GameOfLife {
 		boards.add(board);
 		generationNum++;
 	}
+	/* Generates a random game of life board (Fills it randomly with dead or alive cells)*/
+	public void randomGame()
+	{
+		Random rand = new Random();
+		for(int i = 0; i < this.board.board.length; i++)
+			for(int j = 0; j < this.board.board[0].length; j++)
+			{
+				if(rand.nextBoolean())
+				{
+					this.setCell(i, j, 1);
+				System.out.println("true");
+				}
+				else
+				{
+					System.out.println("false");
+					this.setCell(i, j, 0);
+				}
+			}
+	}
+	/* Set cells in the game board */
+	public int setCell(int row, int col, int pieceValue)
+	{
+		int oldValue = this.board.board[row][col];
+		this.board.board[row][col] = pieceValue;
+		return oldValue;
+	}
+	/* Set cells in the modified game board */
+	public int setMCell(int row, int col, int pieceValue)
+	{
+		int oldValue = this.modifiedBoard.board[row][col];
+		this.modifiedBoard.board[row][col] = pieceValue;
+		return oldValue;
+	}
 
 	public static String toString(int[][] board) {
 		String str = "";
@@ -122,16 +151,29 @@ public class GameOfLife {
 	}
 
 	public static void main(String[] args) {
-		GameOfLife game = new GameOfLife(10);
-		  game.board.setTile(1, 1, 1); game.board.setTile(0, 2, 1);
-		  game.board.setTile(1, 3, 1); game.board.setTile(1, 0, 1);
-		  game.board.setTile(1, 2, 1);
+		GameOfLife game = new GameOfLife(3);
+		game.setCell(0,1,1);
+		game.setCell(1,1,1);
+		game.setCell(2,1,1);
+		game.setCell(1,0,1);
+		game.setCell(1,2,1);
+		System.out.println(game.toString());
+		System.out.println("isAlive() for (1,1) returns: " + game.isAlive(1, 1));
+		System.out.println("countNeighbors() for (1,1) returns: " + game.countNeighbors(1, 1));
+		System.out.println("willLive() for (1,1) returns: " + game.willLive(1, 1));
+		System.out.println("isAlive for (0,0) returns: " + game.isAlive(0, 0));
+		System.out.println("countNeighbors() for (0,0) returns: " + game.countNeighbors(0, 0));
+		System.out.println("willLive() for (0,0) returns: " + game.willLive(0, 0));
+		System.out.println("isAlive for (0,2) returns: " + game.isAlive(0, 2));
+		System.out.println("countNeighbors() for (0,2) returns: " + game.countNeighbors(0, 2));
+		System.out.println("willLive() for (0,2) returns: " + game.willLive(0, 2));
+		System.out.println("isAlive for (2,0) returns: " + game.isAlive(2, 0));
+		System.out.println("countNeighbors() for (2,0) returns: " + game.countNeighbors(2, 0));
+		System.out.println("willLive() for (2,0) returns: " + game.willLive(2, 0));
+		System.out.println("isAlive for (2,2) returns: " + game.isAlive(2, 2));
+		System.out.println("countNeighbors() for (2,2) returns: " + game.countNeighbors(2, 2));
+		System.out.println("willLive() for (2,2) returns: " + game.willLive(2, 2));
 
-		System.out.println(game.toString());
-		game.nextGeneration();
-		System.out.println(game.toString());
-		game.nextGeneration();
-		System.out.println(game.toString());
 	}
 
 }

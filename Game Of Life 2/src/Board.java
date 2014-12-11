@@ -1,3 +1,7 @@
+/*
+ * A gameboard that can store and set pieces and can display it in the console
+ */
+
 public class Board {
 	int[][] board;
 	int numRows;
@@ -27,10 +31,14 @@ public class Board {
 	}
 
 	// Returns the piece that was at the given coordinates
-	// Returns the old value of the tile
+	// Returns the old value of the tile or -1 if not a valid spot on the board
 	public int setTile(int row, int col, int pieceValue) {
-		int oldValue = this.board[row][col];
+		int oldValue = -1;
+		if(isValid(row,col))
+		{
+		oldValue = this.board[row][col];
 		this.board[row][col] = pieceValue;
+		}
 		return oldValue;
 	}
 	// Removes the tile at the given coordinates
@@ -53,18 +61,19 @@ public class Board {
 	// Prints the board as a String in the console
 	public String toString() {
 		String str = "";
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[0].length; j++) {
-				if (board[i][j] == 0)
-					str += " - ";
-				else
-					str += " * ";
-
+		for (int i = 0; i < board.length; i++)
+			for (int j = 0; j < board[0].length; j++)
+			{
+				if(j == 0)
+					str += "[ ";
+				str += getTile(i, j);
+				if(j + 1 != board[0].length)
+					str += ", ";
+				else str += " ] \n";
 			}
-			str += "\n";
-		}
 		return str;
 	}
+		
 	// Checks if the given coordinates are on the board
 	public boolean isValid(int row, int col) {
 		if (row < board.length && row > -1)
@@ -84,6 +93,70 @@ public class Board {
 	public Board copyBoard() {
 		return new Board(this.board.length, this.board[0].length);
 
+	}
+	
+	public static void main(String[] args)
+	{
+		int k = 0;
+		int[][][] testBoards = {
+				{{0,0,0}, {0,0,0}, {0,0,0}},
+				{{1,1,1}, {1,1,1}, {1,1,1}},
+				};
+		
+		for(int[][] a: testBoards)
+		{
+			Board test = new Board(a);
+			System.out.println("---Testing Board " + k++ + "---\n");
+			/* Test removeTile() */
+			System.out.println("---Testing getTile()---\n");
+			System.out.println("---Original---\n");
+			System.out.println(test.toString());
+			String str = "";
+			for(int i = 0; i < test.board.length; i++)
+				for(int j = 0; j < test.board[0].length; j++)
+				{
+					if(j == 0)
+						str += "[ ";
+					str += test.getTile(i, j);
+					if(j + 1 != test.board[0].length)
+						str += ", ";
+					else str += " ] \n";
+				}
+			System.out.println(str + "\n");
+			/* Test setTile() */
+			System.out.println("---Testing setTile()---\n");
+			System.out.println("---Original Board---\n");
+			System.out.println(test.toString());
+			for(int i = 0; i < test.board.length; i++)
+				for(int j = 0; j < test.board[0].length; j++)
+					test.setTile(i, j, 1);
+			System.out.println("---Result---\n");
+			System.out.println(test.toString());
+		
+			/* Test removeTile() */
+			System.out.println("---Testing removeTile()---\n");
+			System.out.println("---Original---\n");
+			System.out.println(test.toString());
+			for(int i = 0; i < test.board.length; i++)
+				for(int j = 0; j < test.board[0].length; j++)
+					test.removeTile(i, j);
+			System.out.println("---Result---\n");
+			System.out.println(test.toString());
+			
+			/* Resetting Board */
+			for(int i = 0; i < test.board.length; i++)
+				for(int j = 0; j < test.board[0].length; j++)
+					test.setTile(i, j, 1);
+			
+			System.out.println("---Testing clear()---\n");
+			System.out.println("---Original---\n");
+			System.out.println(test.toString());
+			test.clear();
+			System.out.println("---Result---\n");
+			System.out.println(test.toString());
+			
+			System.out.println("---------------End Test Case--------------- \n");
+		}
 	}
 
 }

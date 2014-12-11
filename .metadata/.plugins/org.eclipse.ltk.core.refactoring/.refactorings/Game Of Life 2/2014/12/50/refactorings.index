@@ -1,2 +1,6 @@
 1418076338486	Rename field 'boxSize'
 1418076971158	Rename field 'boxSize'
+1418154118706	Rename local variable 'button'
+1418156851310	Rename field 'boardOffsetY'
+1418246889560	Rename type 'RulesDialog'
+1418249522224	Rename field 'lonely'
