@@ -1,0 +1,12 @@
+
+public abstract class Shape {
+	private char paintChar; //What character is used to draw the shape
+	
+	
+	public Shape(char paintCharacter)
+	{
+		this.paintCharacter = paintCharacter;
+	}
+	
+	public abstract void paintOn(Screen screen);
+}
