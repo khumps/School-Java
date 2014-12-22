@@ -22,12 +22,11 @@ public class Screen {
 			{
 				if(i != board[0].length)
 			System.out.print(borderChar);
+				else
+					System.out.print(borderChar + "\n");
 			}
 			else
-				if(i != board[0].length)
-			System.out.print(" ");
-			if(i == board[0].length)
-				System.out.println(" " + borderChar);
+				System.out.print(" ");
 			
 		}
 		
@@ -41,20 +40,6 @@ public class Screen {
 				System.out.print(board[i][j]);
 		}
 		System.out.println("");
-		}
-		for(int i = 0; i <= board[0].length; i++)
-		{
-			if(i % 2 == 0)
-			{
-				if(i != board[0].length)
-			System.out.print(borderChar);
-			}
-			else
-				if(i != board[0].length)
-			System.out.print(" ");
-			if(i == board[0].length)
-				System.out.println(" " + borderChar);
-			
 		}
 	}
 	

@@ -42,20 +42,6 @@ public class Screen {
 		}
 		System.out.println("");
 		}
-		for(int i = 0; i <= board[0].length; i++)
-		{
-			if(i % 2 == 0)
-			{
-				if(i != board[0].length)
-			System.out.print(borderChar);
-			}
-			else
-				if(i != board[0].length)
-			System.out.print(" ");
-			if(i == board[0].length)
-				System.out.println(" " + borderChar);
-			
-		}
 	}
 	
 	public static void main(String[] args)
