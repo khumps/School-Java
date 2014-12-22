@@ -1,0 +1,15 @@
+
+public class VLine extends Line{
+
+	public VLine(int x, int y, char paintChar) {
+		super(paintChar);
+		
+	}
+
+	@Override
+	public void paintOn(Screen screen) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

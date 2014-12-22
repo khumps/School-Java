@@ -16,13 +16,6 @@ public class Screen {
 		//board[x][y] = Shape.getPaintChar();
 	}
 	
-	public boolean isValid(int x, int y) {
-		if (x < board.length && x > -1)
-			if (y < board[0].length && y > -1)
-				return true;
-		return false;
-	}
-	
 	public void draw()
 	{
 		int x = 0;
@@ -48,7 +41,7 @@ public class Screen {
 			if(j == -1 || j == getBoard()[0].length)
 				System.out.print(getBorderChar());
 			else
-				System.out.print(getBoard()[i][j]);
+				System.out.print((int)getBoard()[i][j]);
 		}
 		System.out.println("");
 		}

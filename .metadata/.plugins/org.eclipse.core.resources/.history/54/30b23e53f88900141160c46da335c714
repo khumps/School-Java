@@ -1,0 +1,12 @@
+
+public class HLine extends Line {
+
+	public HLine(int x, int y, char paintChar) {
+		super(x,y,paintChar);
+		
+	}
+	
+	public HLine(Point point, char paintChar) {
+		super(point,paintChar);
+
+}

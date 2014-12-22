@@ -1,0 +1,17 @@
+
+public abstract class Line extends Shape {
+	private Point start;
+
+	public Line(char paintCharacter, int x, int y) {
+		super(paintCharacter);
+		start = new Point(x,y);
+		
+		
+		// TODO Auto-generated constructor stub
+	}
+
+	public abstract void paintOn(Screen screen);
+
+
+
+}
