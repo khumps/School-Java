@@ -11,9 +11,9 @@ public class Screen {
 	}
 	
 	
-	public void paintAt(int x, int y)
+	public void paintAt(int x, int y, Shape shape)
 	{
-		//board[x][y] = Shape.getPaintChar();
+		board[y][x] = shape.getPaintChar();
 	}
 	
 	public boolean isValid(int x, int y) {
@@ -67,12 +67,6 @@ public class Screen {
 			
 		}
 	}
-	
-	public static void main(String[] args)
-	{
-		Screen s = new Screen('*',30,41);
-		s.draw();
-	}
 
 
 	/**
@@ -104,5 +98,13 @@ public class Screen {
 	 */
 	public void setBorderChar(char borderChar) {
 		this.borderChar = borderChar;
+	}
+	
+	public static void main(String[] args)
+	{
+		Screen s = new Screen('+',30,41);
+		VLine vLine = new VLine('*');
+		vLine.paintOn(s);
+		s.draw();
 	}
 }

@@ -1,31 +1,20 @@
 
 public class HLine extends Line {
 
-	public HLine(int x, int y, char paintChar) {
-		super(x,y,paintChar);
+	public HLine(char paintChar) {
+		super(paintChar);
 		
 	}
 	
-	public HLine(Point point, char paintChar) {
-		super(point,paintChar);
+	public HLine(char paintChar) {
+		super(paintChar);
 
 }
 
-	@Override
 	public void paintOn(Screen screen) {
-		for(int i = 0; i <= screen.getBoard()[0].length; i++)
+		for(int i = super.start.getX();i < start.getX() + length; i++)
 		{
-			if(i % 2 == 0)
-			{
-				if(i != screen.getBoard()[0].length)
-			System.out.print(screen.getBorderChar());
-			}
-			else
-				if(i != screen.getBoard()[0].length)
-			System.out.print(" ");
-			if(i == screen.getBoard()[0].length)
-				System.out.println(" " + screen.getBorderChar());
-			
+			screen.paintAt(i, super.start.getX(), this);
 		}
 		
 	}

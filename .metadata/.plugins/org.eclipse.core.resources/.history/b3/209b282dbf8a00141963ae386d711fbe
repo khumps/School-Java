@@ -1,0 +1,24 @@
+
+public class VLine extends Line{
+
+	public VLine(int x, int y, char paintChar) {
+		super(x,y,paintChar);
+		
+	}
+	
+	public VLine(Point point, char paintChar) {
+		super(point,paintChar);
+		
+	}
+
+	@Override
+	public void paintOn(Screen screen) {
+		char paintChar = super.getPaintChar();
+		for(int i = 0; i <= screen.getBoard().length; i++)
+		{
+			screen.paintAt(i, super.start.getY(), this);
+		}
+		
+	}
+
+}

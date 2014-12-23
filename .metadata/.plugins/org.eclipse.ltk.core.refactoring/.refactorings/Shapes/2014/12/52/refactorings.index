@@ -2,3 +2,5 @@
 1419265650570	Encapsulate field 'borderChar'
 1419266517709	Rename local variable 'row'
 1419266523680	Rename local variable 'col'
+1419351216495	Rename field 'xCoord'
+1419351222532	Rename field 'yCoord'

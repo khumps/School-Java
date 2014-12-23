@@ -1,0 +1,22 @@
+
+public class HLine extends Line {
+
+	public HLine(int x, int y, char paintChar) {
+		super(x,y,paintChar);
+		
+	}
+	
+	public HLine(Point point, char paintChar) {
+		super(point,paintChar);
+
+}
+
+	public void paintOn(Screen screen) {
+		char paintChar = super.getPaintChar();
+		for(int i = super.start.getX();i < start.getX() + length; i++)
+		{
+			screen.paintAt(i, super.start.getX(), this);
+		}
+		
+	}
+}

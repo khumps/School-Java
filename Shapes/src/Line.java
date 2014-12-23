@@ -1,21 +1,14 @@
 
 public abstract class Line extends Shape {
-	private Point start;
+	protected Point start;
+	protected int length;
 
-	public Line(int x, int y, char paintChar) {
-		super(paintChar);
-		start = new Point(x,y);
+	public Line(char paintChar) {
+		super(paintChar);		
 	}
-		
-		public Line(Point point, char paintChar) {
-			super(paintChar);
-			start = point;
-		
-		
-		// TODO Auto-generated constructor stub
-	}
-
 	public abstract void paintOn(Screen screen);
+	public abstract void paintOn(int x, int y, int length, Screen screen);
+	public abstract void paintOn(Point point, int length, Screen screen);
 
 
 
