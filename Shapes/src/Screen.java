@@ -14,6 +14,7 @@ public class Screen {
 	public void paintAt(int x, int y, Shape shape)
 	{
 		board[y][x] = shape.getPaintChar();
+		
 	}
 	
 	public boolean isValid(int x, int y) {
@@ -103,7 +104,9 @@ public class Screen {
 	public static void main(String[] args)
 	{
 		Screen s = new Screen('+',30,41);
-		VLine vLine = new VLine('*');
+		VLine vLine = new VLine(5,'*');
+		HLine hLine = new HLine(5,'x');
+		hLine.paintOn(s);
 		vLine.paintOn(s);
 		s.draw();
 	}

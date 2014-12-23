@@ -1,0 +1,10 @@
+
+public class Dimension {
+	protected int height;
+	protected int width;
+
+	public Dimension() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

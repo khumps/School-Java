@@ -1,0 +1,8 @@
+
+public class Dimension {
+
+	public Dimension() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

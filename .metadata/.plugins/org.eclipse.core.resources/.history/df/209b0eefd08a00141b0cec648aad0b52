@@ -1,0 +1,20 @@
+
+public class Box extends Shape {
+	protected Dimension dimension;
+
+	public Box(int width, int height, char paintCharacter) {
+		super(paintCharacter);
+		dimension = new Dimension(width, height);
+	}
+	public Box(int width, int height, char paintCharacter) {
+		super(paintCharacter);
+		dimension = new Dimension(width, height);
+	}
+
+	@Override
+	public void paintOn(Screen screen) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

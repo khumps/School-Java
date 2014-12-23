@@ -1,14 +1,13 @@
 
 public abstract class Line extends Shape {
-	protected Point start;
 	protected int length;
 
-	public Line(char paintChar) {
-		super(paintChar);		
+	public Line(int length, char paintChar) {
+		super(paintChar);
+		this.length = length;
 	}
-	public abstract void paintOn(Screen screen);
-	public abstract void paintOn(int x, int y, int length, Screen screen);
-	public abstract void paintOn(Point point, int length, Screen screen);
+	public abstract void paintOn(int x, int y, Screen screen);
+	public abstract void paintOn(Point point, Screen screen);
 
 
 
