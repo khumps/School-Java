@@ -1,4 +1,3 @@
-
 public class Box extends Shape {
 	protected Dimension dimension;
 
@@ -6,21 +5,27 @@ public class Box extends Shape {
 		super(paintCharacter);
 		dimension = new Dimension(width, height);
 	}
+
 	public Box(Dimension dimension, char paintCharacter) {
 		super(paintCharacter);
 		this.dimension = dimension;
 	}
 
 	public void paintOn(int x, int y, Screen screen) {
-		for(int i = x; x > 0; i--)
-		{
-			for(int j = y; y < screen.getBoard().length; j++)
-			{
-				if(screen.isValid(i, j))
-				screen.getBoard()[x][y] = this.getPaintChar();
+		for (int i = x;i < x + dimension.width; i++) {
+			for (int j = y; j < y + dimension.height; j++) {
+				if (screen.isValid(i, j))
+					screen.paintAt(i, j, this);
 			}
 		}
 
+	}
+	public Dimension getDimension() {
+		return dimension;
+	}
+
+	public void paintOn(Screen screen) {
+		paintOn(0, 0, screen);
 	}
 
 }

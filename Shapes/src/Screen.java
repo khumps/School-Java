@@ -4,7 +4,7 @@ public class Screen {
 
 	public Screen(char borderChar, int width, int height) {
 		this.setBorderChar(borderChar);
-		setBoard(new char[width][height]);
+		setBoard(new char[height][width]);
 		for(int i = 0; i < board.length; i++)
 			for(int j = 0; j < board[0].length; j++)
 				board[i][j] = ' ';
@@ -14,7 +14,6 @@ public class Screen {
 	public void paintAt(int x, int y, Shape shape)
 	{
 		board[y][x] = shape.getPaintChar();
-		
 	}
 	
 	public boolean isValid(int x, int y) {
@@ -106,8 +105,12 @@ public class Screen {
 		Screen s = new Screen('+',30,41);
 		VLine vLine = new VLine(5,'*');
 		HLine hLine = new HLine(5,'x');
+		Box box = new Box(7,7,'y');
+		Frame frame = new Frame(8,8,'x');
 		hLine.paintOn(s);
 		vLine.paintOn(s);
+		box.paintOn(0, 0, s);
+		frame.paintOn(9,9,s);
 		s.draw();
 	}
 }
