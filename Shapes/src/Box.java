@@ -14,7 +14,11 @@ public class Box extends Shape {
 	public void paintOn(int x, int y, Screen screen) {
 		for(int i = x; x > 0; i--)
 		{
-			for(int j = y; y < screen.g)
+			for(int j = y; y < screen.getBoard().length; j++)
+			{
+				if(screen.isValid(i, j))
+				screen.getBoard()[x][y] = this.getPaintChar();
+			}
 		}
 
 	}
