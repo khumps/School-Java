@@ -11,12 +11,11 @@ public class Frame extends Box{
 	
 	private boolean isBorder(int x, int y)
 	{
-		if(x == super.start.x && x == super.start.x + dimension.width)
-			if(y == super.start.y && y == super.start.y + dimension.height)
+		if(x == super.start.x || x == super.start.x + dimension.width - 1)
 				return true;
-		//FIX
+		if(y == super.start.y || y == super.start.y + dimension.height - 1)
+			return true;
 		return false;
-			
 	}
 	public void paintOn(int x, int y, Screen screen) {
 		super.start = new Point(x,y);
@@ -27,7 +26,6 @@ public class Frame extends Box{
 					screen.paintAt(i, j, this);
 			}
 		}
-
 	}
 
 }

@@ -1,0 +1,8 @@
+
+public class TextLine extends Shape {
+
+	public TextLine() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

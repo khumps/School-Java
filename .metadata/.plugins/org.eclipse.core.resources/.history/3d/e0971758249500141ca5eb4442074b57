@@ -1,0 +1,8 @@
+
+public class TextLine {
+
+	public TextLine() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

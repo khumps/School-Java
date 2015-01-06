@@ -1,0 +1,14 @@
+public class TextLine {
+	final String text;
+	public TextLine(String text) {
+		this.text = text.toString();
+	}
+
+	public void paintOn(int x, int y, Screen screen) {
+
+	}
+
+	public void paintOn(Screen screen) {
+		paintOn(0,0,screen);
+	}
+}
