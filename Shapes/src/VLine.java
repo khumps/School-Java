@@ -6,7 +6,8 @@ public class VLine extends Line {
 	}
 	@Override
 	public void paintOn(int x, int y, Screen screen) {
-		for (int i = super.start.y; i < length; i++) {
+		super.start = new Point(x,y);
+		for (int i = super.start.y; i < length + super.start.y ; i++) {
 			if(screen.isValid(super.start.x, i))
 			screen.paintAt(super.start.x, i, this);
 		}

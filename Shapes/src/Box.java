@@ -12,7 +12,7 @@ public class Box extends Shape {
 	}
 
 	public void paintOn(int x, int y, Screen screen) {
-		for (int i = x;i < x + dimension.width; i++) {
+		for (int i = x; i < x + dimension.width; i++) {
 			for (int j = y; j < y + dimension.height; j++) {
 				if (screen.isValid(i, j))
 					screen.paintAt(i, j, this);
@@ -20,6 +20,11 @@ public class Box extends Shape {
 		}
 
 	}
+
+	public void paintOn(Point start, Screen screen) {
+		paintOn(start.x, start.y, screen);
+	}
+
 	public Dimension getDimension() {
 		return dimension;
 	}

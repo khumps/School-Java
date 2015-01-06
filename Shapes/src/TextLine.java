@@ -25,4 +25,9 @@ public class TextLine {
 	public void paintOn(Screen screen) {
 		paintOn(0, 0, screen);
 	}
+	
+	public void paintOn(Point start, Screen screen)
+	{
+		paintOn(start.x,start.y,screen);
+	}
 }

@@ -1,7 +1,7 @@
 
 public final class Point {
-	protected int x;
-	protected final int y;
+	int x;
+	int y;
 
 	public Point(int x,int y) {
 		this.x = x;

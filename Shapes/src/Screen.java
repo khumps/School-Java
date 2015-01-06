@@ -23,8 +23,8 @@ public class Screen {
 	
 	
 	public boolean isValid(int x, int y) {
-		if (x < board.length && x > -1)
-			if (y < board[0].length && y > -1)
+		if (x < board[0].length && x > -1)
+			if (y < board.length && y > -1)
 				return true;
 		return false;
 	}
@@ -106,6 +106,14 @@ public class Screen {
 		this.borderChar = borderChar;
 	}
 	
+	public void clear()
+	{
+		for( int i = 0; i < this.getBoard()[0].length; i ++)
+			for(int j = 0; j < this.getBoard().length; j++)
+				this.paintAt(i, j, ' ');
+	}
+	
+	
 	public static void main(String[] args)
 	{
 		Screen s = new Screen('+',30,41);
@@ -114,11 +122,11 @@ public class Screen {
 		Box box = new Box(7,7,'y');
 		Frame frame = new Frame(8,8,'x');
 		TextLine text = new TextLine("testing 1,2,3");
-		hLine.paintOn(s);
+		hLine.paintOn(4,4,s);
 		vLine.paintOn(s);
-		box.paintOn(0, 0, s);
-		frame.paintOn(9,9,s);
-		text.paintOn(5, 5, s);
+		//box.paintOn(0, 0, s);
+		//frame.paintOn(9,9,s);
+		//text.paintOn(5, 5, s);
 		s.draw();
 	}
 }
