@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="257" key="DIALOG_WIDTH"/>
+		<item value="480" key="DIALOG_Y_ORIGIN"/>
+		<item value="675" key="DIALOG_X_ORIGIN"/>
+		<item value="381" key="DIALOG_HEIGHT"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item value="false" key="isRegEx"/>
-		<item value="" key="selection"/>
-		<item value="false" key="casesensitive"/>
-		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
+		<item value="test" key="selection"/>
 		<list key="findhistory">
+			<item value="test"/>
 			<item value="&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;&#x09;if (debug)"/>
 			<item value="field"/>
 			<item value="lonelyLabel."/>
@@ -15,7 +23,6 @@
 			<item value="System.out"/>
 			<item value="Systen.out"/>
 			<item value="play"/>
-			<item value="addChangeListener"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>
@@ -25,12 +32,5 @@
 			<item value="JMenuItem"/>
 			<item value="a set of data"/>
 		</list>
-	</section>
-	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="257" key="DIALOG_WIDTH"/>
-		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
-		<item value="381" key="DIALOG_HEIGHT"/>
-		<item value="480" key="DIALOG_Y_ORIGIN"/>
-		<item value="675" key="DIALOG_X_ORIGIN"/>
 	</section>
 </section>

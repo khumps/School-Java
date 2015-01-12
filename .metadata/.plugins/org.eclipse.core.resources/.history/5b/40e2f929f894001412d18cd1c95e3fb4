@@ -1,9 +1,0 @@
-
-public class Frame extends Box{
-
-	public Frame(int width, int height,char paintChar) {
-		super(width,height,paintChar)
-		
-	}
-
-}
