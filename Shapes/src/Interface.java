@@ -1,9 +1,17 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Interface {
 	static boolean debug = false;
 
 	public static void main(String[] args) {
+		ArrayList<Integer> menuItems = new ArrayList<Integer>();
+		menuItems.add(1);
+		menuItems.add(2);
+		menuItems.add(3);
+		menuItems.add(4);
+		menuItems.add(5);
+		menuItems.add(6);
 		Scanner input = new Scanner(System.in);
 		Screen screen = new Screen('+', 51, 20);
 		int menuItem;
@@ -27,6 +35,9 @@ public class Interface {
 
 			if (input.hasNextInt()) {
 				menuItem = input.nextInt();
+				if (!menuItems.contains(menuItem)) {
+					menuItem = 10;
+				}
 			} else {
 				menuItem = 9;
 			}
@@ -136,8 +147,8 @@ public class Interface {
 						System.out.println("Enter a width for the Filled Box: ");
 						if (input.hasNextInt()) {
 							width = input.nextInt();
-								if (width > 0)
-									break;
+							if (width > 0)
+								break;
 							else
 								System.out.println("invalid input. Please try again");
 						} else {
@@ -149,8 +160,8 @@ public class Interface {
 						System.out.println("Enter a height for the Filled Box: ");
 						if (input.hasNextInt()) {
 							height = input.nextInt();
-								if (height > 0)
-									break;
+							if (height > 0)
+								break;
 							else
 								System.out.println("invalid input. Please try again");
 						} else {
@@ -197,9 +208,9 @@ public class Interface {
 						System.out.println("Enter a width for the Empty Box: ");
 						if (input.hasNextInt()) {
 							width = input.nextInt();
-								if (width > 0)
-									break;
-						 else
+							if (width > 0)
+								break;
+							else
 								System.out.println("invalid input. Please try again");
 						} else {
 							System.out.println("invalid input. Please try again");
@@ -210,9 +221,9 @@ public class Interface {
 						System.out.println("Enter a height for the Empty Box: ");
 						if (input.hasNextInt()) {
 							height = input.nextInt();
-								if (height > 0)
-									break;
-							 else
+							if (height > 0)
+								break;
+							else
 								System.out.println("invalid input. Please try again");
 						} else {
 							System.out.println("invalid input. Please try again");
@@ -248,43 +259,40 @@ public class Interface {
 				screen.draw();
 
 			}
-			
-			// Start Text Dialogue
-						if (menuItem == 5) {
-							if (!debug) {
-								System.out.println("Enter a String for the text Line: ");
-								text = input.nextLine();
-								text = input.nextLine();
-								System.out.println("test");
-								while (true) {
-									System.out.println("Enter starting X-Coord: ");
-									if (input.hasNextInt()) {
-										x = input.nextInt();
-										break;
-									} else {
-										System.out.println("invalid input. Please try again");
-										input.next();
-									}
-								}
 
-								while (true) {
-									System.out.println("Enter a starting Y-Coord: ");
-									if (input.hasNextInt()) {
-										y = input.nextInt();
-										break;
-									} else {
-										System.out.println("invalid input. Please try again");
-										input.next();
-									}
-								}
-							}
-							start = new Point(x, y);
-							TextLine textLine = new TextLine(text);
-							textLine.paintOn(start, screen);
-							screen.draw();
+			// Start Text Dialogue
+			if (menuItem == 5) {
+				if (!debug) {
+					System.out.println("Enter a String for the text Line: ");
+					input.nextLine();
+					text = input.nextLine();
+					while (true) {
+						System.out.println("Enter starting X-Coord: ");
+						if (input.hasNextInt()) {
+							x = input.nextInt();
+							break;
+						} else {
+							System.out.println("invalid input. Please try again");
+							input.next();
 						}
-			else if(menuItem == 6)
-			{
+					}
+
+					while (true) {
+						System.out.println("Enter a starting Y-Coord: ");
+						if (input.hasNextInt()) {
+							y = input.nextInt();
+							break;
+						} else {
+							System.out.println("invalid input. Please try again");
+							input.next();
+						}
+					}
+				}
+				start = new Point(x, y);
+				TextLine textLine = new TextLine(text);
+				textLine.paintOn(start, screen);
+				screen.draw();
+			} else if (menuItem == 6) {
 				screen.clear();
 				screen.draw();
 			}
@@ -293,9 +301,13 @@ public class Interface {
 				System.out.println("I'm sorry that is not a valid answer. Please try again");
 				input.next();
 			}
+			else if(menuItem == 10)
+			{
+				System.out.println("I'm sorry that is not a valid answer. Please try again");
+			}
 
 		} while (keepRunning);
 
+		input.close();
 	}
-
 }
