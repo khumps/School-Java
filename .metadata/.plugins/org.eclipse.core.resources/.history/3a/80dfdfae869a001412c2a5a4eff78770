@@ -4,7 +4,7 @@ public class Screen {
 
 	public Screen(char borderChar, int width, int height) {
 		this.setBorderChar(borderChar);
-		board = new char[height][width];
+		setBoard(new char[height][width]);
 		for(int i = 0; i < board.length; i++)
 			for(int j = 0; j < board[0].length; j++)
 				board[i][j] = ' ';
@@ -36,9 +36,6 @@ public class Screen {
 				return true;
 		if(y == 0 || y == this.getBoard().length)
 			if(x > 0 && x < this.getBoard()[0].length)
-				if(x % 2 == 0)
-				return true;
-		return false;
 	}
 	
 	public void draw()
@@ -85,28 +82,21 @@ public class Screen {
 			
 		}
 	}
-	
-/*	public void draw()
-	{
-		for(int x = -1; x <= this.getBoard()[0].length; x++)
-		{
-			for(int y = -1; y <= this.getBoard().length; y++)
-			{
-				if(this.isBorder(x, y))
-					System.out.print(getBorderChar());
-				else if(isValid(x,y))
-					System.out.print(getBoard()[y][x]);
-			}
-		}
-	}*/
-	//tried
 
 
 	/**
 	 * @return the board
 	 */
-	public char[][] getBoard() {
+	private char[][] getBoard() {
 		return board;
+	}
+
+
+	/**
+	 * @param board the board to set
+	 */
+	public void setBoard(char[][] board) {
+		this.board = board;
 	}
 
 

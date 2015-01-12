@@ -300,7 +300,9 @@ public class Interface {
 			else if (menuItem == 9) {
 				System.out.println("I'm sorry that is not a valid answer. Please try again");
 				input.next();
-			} else if (menuItem == 10) {
+			}
+			else if(menuItem == 10)
+			{
 				System.out.println("I'm sorry that is not a valid answer. Please try again");
 			}
 
