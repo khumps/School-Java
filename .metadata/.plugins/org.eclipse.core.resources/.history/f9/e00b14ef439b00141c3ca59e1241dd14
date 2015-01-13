@@ -15,6 +15,7 @@ public class Interface {
 		menuItems.add(5);
 		menuItems.add(6);
 		Scanner input = new Scanner(System.in);
+		Screen screen = new Screen('+', 51, 20);
 		int menuItem;
 		int length = 5;
 		int width = 5;
@@ -25,36 +26,35 @@ public class Interface {
 		String text = "testing 1,2,3";
 		Point start;
 		boolean keepRunning = true;
-		while (true) {
-			System.out.println("Define the width of the screen (Drawable area): ");
-			if (input.hasNextInt()) {
-				screenWidth = input.nextInt();
-				if (screenWidth > 0)
-
-					break;
-				else
-					System.out.println("Invalid input. Please try again");
-			} else {
-				System.out.println("Invalid input. Please try again");
-				input.next();
-			}
-		}
-		while (true) {
-			System.out.println("Define the height of the screen (Drawable area): ");
-			if (input.hasNextInt()) {
-				screenHeight = input.nextInt();
-				if (screenHeight > 0)
-
-					break;
-				else
-					System.out.println("Invalid input. Please try again");
-			} else {
-				System.out.println("Invalid input. Please try again");
-				input.next();
-			}
-		}
-		Screen screen = new Screen('+', screenWidth, screenHeight);
 		do {
+			while (true) {
+				System.out.println("Define the width of the screen (Drawable area): ");
+				if (input.hasNextInt()) {
+					screenWidth = input.nextInt();
+					if (screenWidth > 0)
+
+						break;
+					else
+						System.out.println("Invalid input. Please try again");
+				} else {
+					System.out.println("Invalid input. Please try again");
+					input.next();
+				}
+			}
+			while (true) {
+				System.out.println("Define the height of the screen (Drawable area): ");
+				if (input.hasNextInt()) {
+					screenHeight = input.nextInt();
+					if (screenHeight > 0)
+
+						break;
+					else
+						System.out.println("Invalid input. Please try again");
+				} else {
+					System.out.println("Invalid input. Please try again");
+					input.next();
+				}
+			}
 			System.out.println("Welcome What kind of shape would you like to draw: ");
 			System.out.println("(1) Horizontal Line");
 			System.out.println("(2) Vertical Line");

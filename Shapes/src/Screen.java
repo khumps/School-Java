@@ -29,7 +29,7 @@ public class Screen {
 		return false;
 	}
 	
-	public boolean isBorder(int x, int y)
+	public boolean isBorder(int x, int y)// Unused
 	{
 		if(x == 0 || x == this.getBoard()[0].length)
 			if(y > 0 && y < this.getBoard().length)
@@ -85,21 +85,6 @@ public class Screen {
 			
 		}
 	}
-	
-/*	public void draw()
-	{
-		for(int x = -1; x <= this.getBoard()[0].length; x++)
-		{
-			for(int y = -1; y <= this.getBoard().length; y++)
-			{
-				if(this.isBorder(x, y))
-					System.out.print(getBorderChar());
-				else if(isValid(x,y))
-					System.out.print(getBoard()[y][x]);
-			}
-		}
-	}*/
-	//tried
 
 
 	/**
