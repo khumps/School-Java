@@ -23,4 +23,15 @@ public class VLine extends Line {
 	public void paintOn(Point point, Screen screen) {
 		paintOn(point.x, point.y, screen);
 	}
+
+	public void test()
+	{
+		super.test();
+		System.out.println("test");
+	}
+	
+	public static void main(String[] args)
+	{
+		Line test1 = new VLine(5,'*')
+	}
 }

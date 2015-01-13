@@ -8,6 +8,10 @@ public abstract class Line extends Shape {
 	}
 	public abstract void paintOn(int x, int y, Screen screen);
 	public abstract void paintOn(Point point, Screen screen);
+	public void test()
+	{
+		System.out.println("test");
+	}
 
 
 }

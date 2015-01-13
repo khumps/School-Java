@@ -45,11 +45,17 @@ public class Screen {
 	{
 		for(int i = 0; i <= getBoard()[0].length; i++)
 		{
-				if(i <= getBoard()[0].length)
+			//if(i % 2 == 0)
+			//{
+				if(i < getBoard()[0].length)
 			System.out.print(getBorderChar());
-
+			//}
+			/*else
+				if(i >= getBoard()[0].length)
+			System.out.print(" ");*/
 			if(i == getBoard()[0].length)
-				System.out.println(getBorderChar());
+				System.out.println(getBorderChar() + "\n");
+			
 		}
 		
 		for(int i = 0; i < getBoard().length; i++)
@@ -65,11 +71,17 @@ public class Screen {
 		}
 		for(int i = 0; i <= getBoard()[0].length; i++)
 		{
-				if(i <= getBoard()[0].length)
+			if(i % 2 == 0)
+			{
+				if(i != getBoard()[0].length)
 			System.out.print(getBorderChar());
-
+			}
+			else
+				if(i != getBoard()[0].length)
+			System.out.print(" ");
 			if(i == getBoard()[0].length)
-				System.out.println(getBorderChar());
+				System.out.println(" " + getBorderChar());
+			
 		}
 	}
 

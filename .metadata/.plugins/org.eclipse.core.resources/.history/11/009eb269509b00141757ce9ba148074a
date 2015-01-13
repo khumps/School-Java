@@ -26,7 +26,7 @@ public class Interface {
 		Point start;
 		boolean keepRunning = true;
 		while (true) {
-			System.out.println("Define the width of the screen (Drawable area. Border looks better as a odd number): ");
+			System.out.println("Define the width of the screen (Drawable area. looks better as a odd number): ");
 			if (input.hasNextInt()) {
 				screenWidth = input.nextInt();
 				if (screenWidth > 0)

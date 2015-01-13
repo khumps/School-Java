@@ -45,11 +45,17 @@ public class Screen {
 	{
 		for(int i = 0; i <= getBoard()[0].length; i++)
 		{
-				if(i <= getBoard()[0].length)
+			if(i % 2 == 0)
+			{
+				if(i != getBoard()[0].length)
 			System.out.print(getBorderChar());
-
+			}
+			else
+				if(i != getBoard()[0].length)
+			System.out.print(" ");
 			if(i == getBoard()[0].length)
-				System.out.println(getBorderChar());
+				System.out.println(" " + getBorderChar());
+			
 		}
 		
 		for(int i = 0; i < getBoard().length; i++)
@@ -65,11 +71,17 @@ public class Screen {
 		}
 		for(int i = 0; i <= getBoard()[0].length; i++)
 		{
-				if(i <= getBoard()[0].length)
+			if(i % 2 == 0)
+			{
+				if(i != getBoard()[0].length)
 			System.out.print(getBorderChar());
-
+			}
+			else
+				if(i != getBoard()[0].length)
+			System.out.print(" ");
 			if(i == getBoard()[0].length)
-				System.out.println(getBorderChar());
+				System.out.println(" " + getBorderChar());
+			
 		}
 	}
 
@@ -115,9 +127,9 @@ public class Screen {
 		TextLine text = new TextLine("testing 1,2,3");
 		hLine.paintOn(4,4,s);
 		vLine.paintOn(s);
-		box.paintOn(0, 0, s);
-		frame.paintOn(9,9,s);
-		text.paintOn(5, 5, s);
+		//box.paintOn(0, 0, s);
+		//frame.paintOn(9,9,s);
+		//text.paintOn(5, 5, s);
 		s.draw();
 	}
 }
