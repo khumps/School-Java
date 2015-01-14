@@ -72,7 +72,6 @@ public class Interface {
 			System.out.println("(4) Empty Box");
 			System.out.println("(5) A Line of Text");
 			System.out.println("(6) Clear the board");
-			System.out.println("(7) Quit");
 
 			if (input.hasNextInt()) {
 				menuItem = input.nextInt();

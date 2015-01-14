@@ -15,9 +15,10 @@ public class TextLine {
 		int i = 0;
 		for (int j = x; j < x + screen.getBoard()[0].length; j++) {
 			if (indexIsValid(i))
-				if (screen.isValid(j, y)) 
+				if (screen.isValid(j, y)) {
 					screen.paintAt(j, y, this.text.charAt(i));
 					i++;
+				}
 		}
 	}
 

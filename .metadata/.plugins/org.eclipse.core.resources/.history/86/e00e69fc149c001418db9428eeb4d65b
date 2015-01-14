@@ -14,7 +14,6 @@ public class Interface {
 		menuItems.add(4);
 		menuItems.add(5);
 		menuItems.add(6);
-		menuItems.add(7);
 		Scanner input = new Scanner(System.in);
 		int menuItem;
 		int length = 5;
@@ -72,7 +71,6 @@ public class Interface {
 			System.out.println("(4) Empty Box");
 			System.out.println("(5) A Line of Text");
 			System.out.println("(6) Clear the board");
-			System.out.println("(7) Quit");
 
 			if (input.hasNextInt()) {
 				menuItem = input.nextInt();
@@ -341,8 +339,6 @@ public class Interface {
 				screen.clear();
 				screen.draw();
 			}
-			else if(menuItem == 7)
-				System.exit(0);
 			// Invalid input Dialogue
 			else if (menuItem == 9) {
 				System.out.println("I'm sorry that is not a valid answer. Please try again");
