@@ -107,7 +107,7 @@ public class Screen {
 	
 	public static void main(String[] args)
 	{
-		Screen s = new Screen('+',1,1);
+		Screen s = new Screen('+',30,41);
 		VLine vLine = new VLine(5,'*');
 		HLine hLine = new HLine(5,'x');
 		Box box = new Box(7,7,'y');
@@ -117,7 +117,7 @@ public class Screen {
 		vLine.paintOn(s);
 		box.paintOn(0, 0, s);
 		frame.paintOn(9,9,s);
-		text.paintOn(-1, 0, s);
+		text.paintOn(5, 5, s);
 		s.draw();
 	}
 }

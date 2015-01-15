@@ -6,7 +6,7 @@ public class HLine extends Line {
 
 	public void paintOn(int x, int y, Screen screen) {
 		super.start = new Point(x, y);
-		for (int i = super.start.x; i < length + super.start.x; i++) {
+		for (int i = super.start.x; i < length + x; i++) {
 			if (screen.isValid(i, super.start.y))
 				screen.paintAt(i, super.start.y, this);
 		}

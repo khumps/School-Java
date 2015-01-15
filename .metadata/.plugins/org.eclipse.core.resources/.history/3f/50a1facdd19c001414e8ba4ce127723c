@@ -1,6 +1,5 @@
 public class TextLine {
 	private String text;
-	private Point start;
 
 	public TextLine(String text) {
 		this.text = text.toString();
@@ -13,11 +12,11 @@ public class TextLine {
 	}
 
 	public void paintOn(int x, int y, Screen screen) {
-		start = new Point(x,y);
-		for (int i = 0; x <= start.x + screen.getBoard()[0].length; x++) {
-				if (screen.isValid(x, start.y)) 
+		int i = 0;
+		for (int j = x; j < x + screen.getBoard()[0].length; j++) {
+				if (screen.isValid(j, y)) 
 					if (indexIsValid(i))
-					screen.paintAt(x, start.y, this.text.charAt(i));
+					screen.paintAt(j, y, this.text.charAt(i));
 					i++;
 		}
 	}

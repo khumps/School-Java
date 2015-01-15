@@ -117,7 +117,7 @@ public class Screen {
 		vLine.paintOn(s);
 		box.paintOn(0, 0, s);
 		frame.paintOn(9,9,s);
-		text.paintOn(-1, 0, s);
+		text.paintOn(-, 0, s);
 		s.draw();
 	}
 }
