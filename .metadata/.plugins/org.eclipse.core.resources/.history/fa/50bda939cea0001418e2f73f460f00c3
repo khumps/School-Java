@@ -10,7 +10,6 @@ public abstract class Line extends Shape {
 		super(paintChar);
 		this.length = length;
 	}
-	/*Paints the line on the screen at the given x and y coord*/
 	public abstract void paintOn(int x, int y, Screen screen);
 	public abstract void paintOn(Point point, Screen screen);
 

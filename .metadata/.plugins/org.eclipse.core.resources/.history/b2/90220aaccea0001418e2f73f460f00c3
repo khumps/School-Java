@@ -23,7 +23,7 @@ public class HLine extends Line {
 		paintOn(0, 0, screen);
 	}
 
-	/*Paints the line on the given screen at the given point*/
+	@Override
 	public void paintOn(Point point, Screen screen) {
 		paintOn(point.x, point.y, screen);
 	}

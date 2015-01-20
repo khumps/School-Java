@@ -1,6 +1,6 @@
 /*A Frame contains a Dimension, a starting Point and a paint character*/
 public class Frame extends Box{
-	/*Creates a new Frame with the given width, height, and paint char*/
+
 	public Frame(int width, int height,char paintChar) {
 		super(width,height,paintChar);		
 	}

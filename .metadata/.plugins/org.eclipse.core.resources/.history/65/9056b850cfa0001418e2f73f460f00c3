@@ -32,7 +32,7 @@ public class Box extends Shape {
 	public Dimension getDimension() {
 		return dimension;
 	}
-	/*Paints the box on the given screen*/
+	/
 	public void paintOn(Screen screen) {
 		paintOn(0, 0, screen);
 	}
