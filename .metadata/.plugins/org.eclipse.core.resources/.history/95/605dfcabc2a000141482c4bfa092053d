@@ -14,7 +14,6 @@ public abstract class Shape {
 		this.paintChar = paintCharacter;
 	}
 	
-	/*Paints the shape on given screen*/
 	public abstract void paintOn(Screen screen);
 
 	/**

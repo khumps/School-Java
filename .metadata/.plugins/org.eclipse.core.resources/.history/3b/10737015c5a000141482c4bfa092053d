@@ -14,7 +14,7 @@ public class Box extends Shape {
 		super(paintCharacter);
 		this.dimension = dimension;
 	}
-	/*Paints the shape on the screen starting at the given x and y on the right screen*/
+	/*Paints the same on the screen starting at the given x and y on the right screen*/
 	public void paintOn(int x, int y, Screen screen) {
 		for (int i = x; i < x + dimension.width; i++) {
 			for (int j = y; j < y + dimension.height; j++) {
@@ -24,7 +24,7 @@ public class Box extends Shape {
 		}
 
 	}
-	/*Paints the shape on the screen starting at the given point on the given screen*/
+
 	public void paintOn(Point start, Screen screen) {
 		paintOn(start.x, start.y, screen);
 	}
