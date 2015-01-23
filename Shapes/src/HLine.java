@@ -3,6 +3,7 @@
  * Contains a start point, a length and a paint character
  */
 public class HLine extends Line {
+	
 	/*Constructs a new HLine with given length and paint character. Can be drawn on any screen*/
 	public HLine(int length, char paintChar) {
 		super(length, paintChar);
@@ -15,16 +16,16 @@ public class HLine extends Line {
 			if (screen.isValid(i, super.start.y))
 				screen.paintAt(i, super.start.y, this);
 		}
-
-	}
-	/*Paints the line on the given screen*/
-	public void paintOn(Screen screen) {
-		super.start = new Point(0, 0);
-		paintOn(0, 0, screen);
 	}
 
 	/*Paints the line on the given screen at the given point*/
 	public void paintOn(Point point, Screen screen) {
 		paintOn(point.x, point.y, screen);
+	}
+		
+	/*Paints the line on the given screen*/
+	public void paintOn(Screen screen) {
+		super.start = new Point(0, 0);
+		paintOn(0, 0, screen);
 	}
 }

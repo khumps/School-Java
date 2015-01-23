@@ -1,27 +1,31 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/*Interface that creates a Screen and allows you to draw shapes on it*/
 public class Interface {
-	static boolean debug = false;
+	static boolean debug = false;/*If true then prompts for shape parameters will be skipped
+	and defaults will be used(see variable initializations)*/
 
 	public static void main(String[] args) {
+		/*Variables*/
 		int screenWidth;
 		int screenHeight;
-		ArrayList<Integer> menuItems = new ArrayList<Integer>();
-		menuItems.add(1);
-		menuItems.add(2);
-		menuItems.add(3);
-		menuItems.add(4);
-		menuItems.add(5);
-		menuItems.add(6);
-		menuItems.add(7);
+		/*ArrayList of menuItems*/
+			ArrayList<Integer> menuItems = new ArrayList<Integer>();
+			menuItems.add(1);
+			menuItems.add(2);
+			menuItems.add(3);
+			menuItems.add(4);
+			menuItems.add(5);
+			menuItems.add(6);
+			menuItems.add(7);
+		/*End ArrayList of menuItems*/
 		Scanner input = new Scanner(System.in);
 		int menuItem;
 		int length = 5;
 		int width = 5;
 		int height = 5;
-		int x = 5;
-		int y = 5;
+		int x = 0;
+		int y = 0;
 		char drawChar = '*';
 		String text = "testing 1,2,3";
 		Point start;
@@ -84,11 +88,11 @@ public class Interface {
 			}
 			// Start HLine Dialogue
 			if (menuItem == 1) {
-				if (!debug) {
+				
 					System.out.println("Enter a draw character for the horizontal line: ");
 
 					drawChar = input.next().charAt(0);
-
+				if (!debug) {
 					while (true) {
 						System.out.println("Enter a length for the horizontal line: ");
 						if (input.hasNextInt()) {
@@ -133,9 +137,10 @@ public class Interface {
 			}
 			// Start VLine Dialogue
 			if (menuItem == 2) {
-				if (!debug) {
+
 					System.out.println("Enter a draw character for the vertical line: ");
 					drawChar = input.next().charAt(0);
+				if (!debug) {
 					while (true) {
 						System.out.println("Enter a length for the vertical line: ");
 						if (input.hasNextInt()) {
