@@ -1,0 +1,48 @@
+/*
+ * A box that is filled in with the paint character\
+ * has a starting point and the dimensions
+ */
+public class Box extends Shape {
+	protected Dimension dimension;
+	/*Creates a new box with the given width,height, and paint character*/
+	public Box(int width, int height, char paintCharacter) {
+		super(paintCharacter);
+		dimension = new Dimension(width, height);
+	}
+	//Creates a new box with the given dimensions and paint character
+	public Box(Dimension dimension, char paintCharacter) {
+		super(paintCharacter);
+		this.dimension = dimension;
+	}
+	/*Paints the box on the screen starting at the given x and y on the right screen*/
+	public void paintOn(int x, int y, Screen screen) {
+		for (int i = x; i < x + dimension.width; i++) {
+			for (int j = y; j < y + dimension.height; j++) {
+				if (screen.isValid(i, j))
+					screen.paintAt(i, j, this);
+			}
+		}
+
+	}
+	/*Paints the box on the screen starting at the given point on the given screen*/
+	public void paintOn(Point start, Screen screen) {
+		paintOn(start.x, start.y, screen);
+	}
+	/*Returns the dimensions of the box*/
+	public Dimension getDimension() {
+		return dimension;
+	}
+	/*Paints the box on the given screen*/
+	public void paintOn(Screen screen) {
+		paintOn(0, 0, screen);
+	}
+	
+	public static void main(String[] args)
+	{
+		Screen screen = new Screen('+' , 20,10);
+		Box box = new Box(5,5,'A');
+		box.paintOn(3,3,screen);
+		screen.draw();
+	}
+
+}

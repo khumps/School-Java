@@ -1,0 +1,41 @@
+/*A Vertical Line can be drawn on the screen
+ * Contains a start point, a length and a paint character
+ */
+public class VLine extends Line {
+	/* Constructs a new HLine with given length and paint character */
+	public VLine(int length, char paintChar) {
+		super(length, paintChar);
+
+	}
+
+	/* Paints a line at the given point on the given screen */
+	@Override
+	public void paintOn(int x, int y, Screen screen) {
+		super.start = new Point(x, y);
+		for (int i = super.start.y; i < length + super.start.y; i++) {
+			if (screen.isValid(super.start.x, i))
+				screen.paintAt(super.start.x, i, this);
+		}
+
+	}
+
+	/* Paints the line on the given screen at the given point */
+	@Override
+	public void paintOn(Point point, Screen screen) {
+		paintOn(point.x, point.y, screen);
+	}
+
+	/* Paints the line on the given screen at 0,0 */
+	public void paintOn(Screen screen) {
+		super.start = new Point(0, 0);
+		paintOn(0, 0, screen);
+	}
+	
+	public static void main(String[] args) {
+		Screen screen = new Screen('+', 20, 10);
+		HLine hLine = new HLine(5, 'A');
+		hLine.paintOn(3, 3, screen);
+		screen.draw();
+	}
+
+}

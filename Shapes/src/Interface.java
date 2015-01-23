@@ -1,24 +1,28 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+
 /*Interface that creates a Screen and allows you to draw shapes on it*/
 public class Interface {
-	static boolean debug = false;/*If true then prompts for shape parameters will be skipped
-	and defaults will be used(see variable initializations)*/
+	static boolean debug = false;/*
+								 * If true then prompts for shape parameters
+								 * will be skipped and defaults will be used(see
+								 * variable initializations)
+								 */
 
 	public static void main(String[] args) {
-		/*Variables*/
+		/* Variables */
 		int screenWidth;
 		int screenHeight;
-		/*ArrayList of menuItems*/
-			ArrayList<Integer> menuItems = new ArrayList<Integer>();
-			menuItems.add(1);
-			menuItems.add(2);
-			menuItems.add(3);
-			menuItems.add(4);
-			menuItems.add(5);
-			menuItems.add(6);
-			menuItems.add(7);
-		/*End ArrayList of menuItems*/
+		/* ArrayList of menuItems */
+		ArrayList<Integer> menuItems = new ArrayList<Integer>();
+		menuItems.add(1);
+		menuItems.add(2);
+		menuItems.add(3);
+		menuItems.add(4);
+		menuItems.add(5);
+		menuItems.add(6);
+		menuItems.add(7);
+		/* End ArrayList of menuItems */
 		Scanner input = new Scanner(System.in);
 		int menuItem;
 		int length = 5;
@@ -34,14 +38,12 @@ public class Interface {
 			System.out.println("Define the width of the screen (Drawable area): ");
 			if (input.hasNextInt()) {
 				screenWidth = input.nextInt();
-				if (screenWidth > 0)
-				{
-					if(screenWidth <= 100)
-					break;
+				if (screenWidth > 0) {
+					if (screenWidth <= 100)
+						break;
 					else
 						System.out.println("Screen width must be less then or equal to 100");
-				}
-				else
+				} else
 					System.out.println("Invalid input. Please try again");
 			} else {
 				System.out.println("Invalid input. Please try again");
@@ -52,15 +54,13 @@ public class Interface {
 			System.out.println("Define the height of the screen (Drawable area): ");
 			if (input.hasNextInt()) {
 				screenHeight = input.nextInt();
-				if (screenHeight > 0)
-				{
-					if(screenHeight <= 100)
-					
-					break;
+				if (screenHeight > 0) {
+					if (screenHeight <= 100)
+
+						break;
 					else
 						System.out.println("Screen width must be less then or equal to 100");
-					}
-				else
+				} else
 					System.out.println("Invalid input. Please try again");
 			} else {
 				System.out.println("Invalid input. Please try again");
@@ -88,20 +88,21 @@ public class Interface {
 			}
 			// Start HLine Dialogue
 			if (menuItem == 1) {
-				
-					System.out.println("Enter a draw character for the horizontal line: ");
 
-					drawChar = input.next().charAt(0);
+				System.out.println("Enter a draw character for the horizontal line: ");
+
+				drawChar = input.next().charAt(0);
 				if (!debug) {
 					while (true) {
 						System.out.println("Enter a length for the horizontal line: ");
 						if (input.hasNextInt()) {
 							length = input.nextInt();
 							if (length > 0)
-								if(length < 200)
-								break;
-							else
-								System.out.println("Invalid input. Length must be less then 200");
+								if (length < 200)
+									break;
+								else
+									System.out
+											.println("Invalid input. Length must be less then 200");
 						} else {
 							System.out.println("Invalid input. Please try again");
 							input.next();
@@ -138,18 +139,19 @@ public class Interface {
 			// Start VLine Dialogue
 			if (menuItem == 2) {
 
-					System.out.println("Enter a draw character for the vertical line: ");
-					drawChar = input.next().charAt(0);
+				System.out.println("Enter a draw character for the vertical line: ");
+				drawChar = input.next().charAt(0);
 				if (!debug) {
 					while (true) {
 						System.out.println("Enter a length for the vertical line: ");
 						if (input.hasNextInt()) {
 							length = input.nextInt();
 							if (length > 0)
-								if(length < 200)
-								break;
-							else
-								System.out.println("Invalid input. Length must be less then 200");
+								if (length < 200)
+									break;
+								else
+									System.out
+											.println("Invalid input. Length must be less then 200");
 						} else {
 							System.out.println("Invalid input. Please try again");
 							input.next();
@@ -194,10 +196,11 @@ public class Interface {
 						if (input.hasNextInt()) {
 							width = input.nextInt();
 							if (width > 0)
-								if(width < 200)
-								break;
-							else
-								System.out.println("Invalid input. Width must be less then 200");
+								if (width < 200)
+									break;
+								else
+									System.out
+											.println("Invalid input. Width must be less then 200");
 						} else {
 							System.out.println("Invalid input. Please try again");
 							input.next();
@@ -208,10 +211,11 @@ public class Interface {
 						if (input.hasNextInt()) {
 							height = input.nextInt();
 							if (height > 0)
-								if(height < 200)
-								break;
-							else
-								System.out.println("Invalid input. Height must be less then 200");
+								if (height < 200)
+									break;
+								else
+									System.out
+											.println("Invalid input. Height must be less then 200");
 						} else {
 							System.out.println("Invalid input. Please try again");
 							input.next();
@@ -257,10 +261,11 @@ public class Interface {
 						if (input.hasNextInt()) {
 							width = input.nextInt();
 							if (width > 0)
-								if(width < 200)
-								break;
-							else
-								System.out.println("Invalid input. width must be less then 200");
+								if (width < 200)
+									break;
+								else
+									System.out
+											.println("Invalid input. width must be less then 200");
 						} else {
 							System.out.println("Invalid input. Please try again");
 							input.next();
@@ -271,10 +276,11 @@ public class Interface {
 						if (input.hasNextInt()) {
 							height = input.nextInt();
 							if (height > 0)
-								if(height < 200)
-								break;
-							else
-								System.out.println("Invalid input. Height must be less then 200");
+								if (height < 200)
+									break;
+								else
+									System.out
+											.println("Invalid input. Height must be less then 200");
 						} else {
 							System.out.println("Invalid input. Please try again");
 							input.next();
@@ -345,8 +351,7 @@ public class Interface {
 			} else if (menuItem == 6) {
 				screen.clear();
 				screen.draw();
-			}
-			else if(menuItem == 7)
+			} else if (menuItem == 7)
 				System.exit(0);
 			// Invalid input Dialogue
 			else if (menuItem == 9) {
