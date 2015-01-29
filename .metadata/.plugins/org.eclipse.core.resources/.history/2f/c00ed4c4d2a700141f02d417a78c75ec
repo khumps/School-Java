@@ -1,0 +1,6 @@
+public class Polygon {
+	private public Polygon() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

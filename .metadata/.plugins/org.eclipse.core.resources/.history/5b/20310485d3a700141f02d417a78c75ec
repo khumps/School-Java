@@ -1,0 +1,11 @@
+public abstract class Polygon {
+	
+	private final PolarCoord center;
+	private final PolarCoord[] endPoints;
+	public Polygon(PolarCoord center) {
+		this.center = center;
+	}
+	
+	public abstract void rotate(double degrees);
+
+}

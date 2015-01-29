@@ -1,0 +1,8 @@
+public class Polygon {
+	
+	private final PolarCoord center;
+	public Polygon() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

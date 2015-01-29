@@ -1,0 +1,8 @@
+
+public class PolarCoord {
+
+	public PolarCoord() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
