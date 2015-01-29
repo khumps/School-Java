@@ -5,7 +5,6 @@ INDEX VERSION 1.126+C:\Users\16humphreysk\Documents\GitHub\Java\.metadata\.plugi
 4173023868.index
 30765161.index
 1554799930.index
-3997585186.index
 305854171.index
 1498219845.index
 1995173708.index
