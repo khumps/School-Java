@@ -1,5 +1,5 @@
 public abstract class Polygon {
-	
+	private double orientation; //Current rotation of the Polygon
 	private final PolarCoord center;
 	private final PolarCoord[] endPoints;
 	public Polygon(PolarCoord center, PolarCoord... coords) {
