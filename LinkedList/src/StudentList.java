@@ -34,17 +34,23 @@ public class StudentList {
 	}
 
 	public void insertByLastName(Student s) {
+		insertByLastName(new StudentNode(s, null));
+	}
+
+	private void insertByLastName(StudentNode node) {
 		boolean inserted = false;
 		StudentNode temp = head;
-		if (temp.student.getLastName().compareToIgnoreCase(s.getLastName()) > 0) {
-			head = new StudentNode(s, temp);
+		if (temp.student.getLastName().compareToIgnoreCase(
+				node.student.getLastName()) > 0) {
+			head = node;
+			node.next = temp;
 		}
 
 		while (temp != null
 				&& inserted == false
 				&& temp.student.getLastName().compareToIgnoreCase(
-						s.getLastName()) < 0) {
-			StudentNode insert = new StudentNode(s, temp.next);
+						node.student.getLastName()) < 0) {
+			StudentNode insert = new StudentNode(node.student, temp.next);
 			temp.next = insert;
 			inserted = true;
 			temp = temp.next;
@@ -65,35 +71,16 @@ public class StudentList {
 	}
 
 	private void sortByLastName(StudentNode node) {
-		while (!isSortedByLast()) {
-			StudentNode temp = head;
-			while (temp != null && temp.next != null) {
-				if (temp.student.getLastName().compareToIgnoreCase(
-						temp.next.student.getLastName()) > 0) {
-					swapNodes(temp, temp.next);
-					traverse();
-				}
-				temp = temp.next;
-			}
-		}
-	}
+		StudentList temp = new StudentList(new StudentNode(head.student, null));
+		// Just use the StudentNode
+		head = head.next;
+		while (head != null) {
+			StudentNode tempNode = head;
+			head = head.next;
+			temp.insertByLastName(tempNode);
 
-	private boolean isSortedByLast() {
-		StudentNode temp = head;
-		while (temp != null) {
-			if (temp.student.getLastName().compareToIgnoreCase(
-					temp.next.student.getLastName()) > 0)
-				return false;
-			temp = temp.next;
 		}
-		return true;
-	}
-
-	private void swapNodes(StudentNode n1, StudentNode n2) {
-		StudentNode temp = n1;
-		StudentNode temp2 = n2;
-		n1 = new StudentNode(temp2.student, temp.next);
-		n2 = new StudentNode(temp.student, temp2.next);
+		head = temp.head;
 	}
 
 	public static void main(String[] args) {
