@@ -44,17 +44,21 @@ public class StudentList {
 				node.student.getLastName()) > 0) {
 			head = node;
 			node.next = temp;
+			inserted = true;
+		} else {
+
+			while (temp != null && temp.next != null && inserted == false) {
+				if (temp.next.student.getLastName().compareToIgnoreCase(
+						node.student.getLastName()) > 0)
+					inserted = true;
+				else
+					temp = temp.next;
+			}
+
+			node.next = temp.next;
+			temp.next = node;
 		}
 
-		while (temp != null
-				&& inserted == false
-				&& temp.student.getLastName().compareToIgnoreCase(
-						node.student.getLastName()) < 0) {
-			StudentNode insert = new StudentNode(node.student, temp.next);
-			temp.next = insert;
-			inserted = true;
-			temp = temp.next;
-		}
 	}
 
 	public void traverse() {
@@ -83,9 +87,32 @@ public class StudentList {
 		head = temp.head;
 	}
 
+	private void insertByAverage(StudentNode node) {
+		boolean inserted = false;
+		StudentNode temp = head;
+		if (temp.student.getGPA() > node.student.getGPA()) {
+			head = node;
+			node.next = temp;
+			inserted = true;
+		}
+
+		while (temp != null
+				&& inserted == false
+				&& temp.student.getLastName().compareToIgnoreCase(
+						node.student.getLastName()) < 0) {
+			StudentNode insert = new StudentNode(node.student, temp.next);
+			temp.next = insert;
+			inserted = true;
+			temp = temp.next;
+		}
+	}
+
 	public static void main(String[] args) {
 		StudentList list = new StudentList(new Student("Thomas", "Edgars", 89));
 		list.addStart(new Student("Jennifer", "Smith", 86));
+		list.addStart(new Student("Bob", "fob", 77));
+		list.addStart(new Student("Bob", "zob", 77));
+
 		list.traverse();
 		list.sortByLastName();
 		list.traverse();
