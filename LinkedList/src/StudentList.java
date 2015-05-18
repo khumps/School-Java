@@ -33,6 +33,45 @@ public class StudentList {
 		head = new StudentNode(s, head);
 	}
 
+	public void insertByAverage(Student s) {
+		insertByAverage(new StudentNode(s, null));
+	}
+
+	private void insertByAverage(StudentNode node) {
+		boolean inserted = false;
+		StudentNode temp = head;
+		if (temp.student.getGPA() > node.student.getGPA()) {
+			head = node;
+			node.next = temp;
+		} else {
+
+			while (temp != null && temp.next != null && inserted == false) {
+				if (temp.next.student.getGPA() > node.student.getGPA())
+					inserted = true;
+				else
+					temp = temp.next;
+			}
+
+			node.next = temp.next;
+			temp.next = node;
+		}
+	}
+
+	public void sortByAverage() {
+		sortByAverage(head);
+	}
+
+	public void sortByAverage(StudentNode node) {
+		StudentList temp = new StudentList(head);
+		StudentNode tempNode = head.next;
+		while (head != null && head.next != null) {
+			temp.insertByAverage(tempNode);
+			tempNode = tempNode.next;
+
+		}
+		head = temp.head;
+	}
+
 	public void insertByLastName(Student s) {
 		insertByLastName(new StudentNode(s, null));
 	}
@@ -61,15 +100,6 @@ public class StudentList {
 
 	}
 
-	public void traverse() {
-		StudentNode temp = head;
-		while (temp != null) {
-			System.out.println(temp.student.toString());
-			temp = temp.next;
-		}
-		System.out.println("_________________________");
-	}
-
 	public void sortByLastName() {
 		sortByLastName(head);
 	}
@@ -87,24 +117,13 @@ public class StudentList {
 		head = temp.head;
 	}
 
-	private void insertByAverage(StudentNode node) {
-		boolean inserted = false;
+	public void traverse() {
 		StudentNode temp = head;
-		if (temp.student.getGPA() > node.student.getGPA()) {
-			head = node;
-			node.next = temp;
-			inserted = true;
-		}
-
-		while (temp != null
-				&& inserted == false
-				&& temp.student.getLastName().compareToIgnoreCase(
-						node.student.getLastName()) < 0) {
-			StudentNode insert = new StudentNode(node.student, temp.next);
-			temp.next = insert;
-			inserted = true;
+		while (temp != null) {
+			System.out.println(temp.student.toString());
 			temp = temp.next;
 		}
+		System.out.println("_________________________");
 	}
 
 	public static void main(String[] args) {
@@ -113,9 +132,10 @@ public class StudentList {
 		list.addStart(new Student("Bob", "fob", 77));
 		list.addStart(new Student("Bob", "zob", 77));
 
+/*		list.traverse();
+		//list.sortByAverage();
 		list.traverse();
-		list.sortByLastName();
-		list.traverse();
+		list.traverse();*/
 	}
 
 }
