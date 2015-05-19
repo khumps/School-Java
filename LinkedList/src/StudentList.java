@@ -22,6 +22,10 @@ public class StudentList {
 			this.next = next;
 		}
 
+		public boolean equals( node) {
+			if(student.getLastName().equals(node.student.getLastName()))
+		}
+
 		public String toString() {
 			if (next != null)
 				return student.toString() + " " + next.toString();
@@ -29,8 +33,17 @@ public class StudentList {
 		}
 	}
 
-	public void addStart(Student s) {
-		head = new StudentNode(s, head);
+	public Student remove(Student item) {
+		StudentNode temp = head;
+		while (temp != null && temp.next != null) {
+			if (temp.equals(item)) {
+				Student s = temp.next.student;
+				temp.next = temp.next.next;
+				return s;
+			}
+			temp = temp.next;
+		}
+		return null;
 	}
 
 	public void insertByAverage(Student s) {
@@ -62,11 +75,12 @@ public class StudentList {
 	}
 
 	public void sortByAverage(StudentNode node) {
-		StudentList temp = new StudentList(head);
-		StudentNode tempNode = head.next;
-		while (head != null && head.next != null) {
+		StudentList temp = new StudentList(new StudentNode(head.student, null));
+		head = head.next;
+		while (head != null) {
+			StudentNode tempNode = head;
+			head = head.next;
 			temp.insertByAverage(tempNode);
-			tempNode = tempNode.next;
 
 		}
 		head = temp.head;
@@ -106,7 +120,6 @@ public class StudentList {
 
 	private void sortByLastName(StudentNode node) {
 		StudentList temp = new StudentList(new StudentNode(head.student, null));
-		// Just use the StudentNode
 		head = head.next;
 		while (head != null) {
 			StudentNode tempNode = head;
@@ -128,14 +141,20 @@ public class StudentList {
 
 	public static void main(String[] args) {
 		StudentList list = new StudentList(new Student("Thomas", "Edgars", 89));
-		list.addStart(new Student("Jennifer", "Smith", 86));
-		list.addStart(new Student("Bob", "fob", 77));
-		list.addStart(new Student("Bob", "zob", 77));
-
-/*		list.traverse();
-		//list.sortByAverage();
+		list.insertByLastName(new Student("Jeniffer", "Smith", 86));
+		list.insertByLastName(new Student("Harold", "Umberton", 78));
+		list.insertByLastName(new Student("Frank", "Martin", 60));
+		list.insertByLastName(new Student("Jeremy", "Andrews", 83));
+		list.insertByLastName(new Student("Laura", "Roberts", 93));
+		list.insertByLastName(new Student("Adele", "Lincoln", 85));
+		list.insertByLastName(new Student("Peter", "Smith", 91));
+		list.insertByLastName(new Student("Larry", "Peterson", 72));
+		System.out
+				.println("_________ Students inserted by last name _________");
 		list.traverse();
-		list.traverse();*/
+		System.out.println(list.remove(new Student("Frank", "Martin", 60)));
+		list.traverse();
+		list.sortByAverage();
+		list.traverse();
 	}
-
 }
