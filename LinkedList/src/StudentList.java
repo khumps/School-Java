@@ -1,46 +1,7 @@
 public class StudentList {
-    private StudentNode head = null;
-
-    public static void main(String[] args) {
-        StudentList list = new StudentList();
-        Student thomas = list.insertByLastName(new Student("Thomas", "Edgars", 89));
-        Student jeniffer = list.insertByLastName(new Student("Jeniffer", "Smith", 86));
-        Student harold = list.insertByLastName(new Student("Harold", "Umberton", 78));
-        Student frank = list.insertByLastName(new Student("Frank", "Martin", 60));
-        Student jeremy = list.insertByLastName(new Student("Jeremy", "Andrews", 83));
-        Student laura = list.insertByLastName(new Student("Laura", "Roberts", 93));
-        Student adele = list.insertByLastName(new Student("Adele", "Lincoln", 85));
-        Student peter = list.insertByLastName(new Student("Peter", "Smith", 91));
-        Student larry = list.insertByLastName(new Student("Larry", "Peterson", 72));
-        System.out
-                .println("_________ Students inserted by last name _________");
-        list.traverse();
-        list.remove(frank);
-        System.out.println("Removed Frank. Poor Frank");
-        System.out.println();
-        list.traverse();
-        System.out.println("test");
-        list.sortByAverage();
-        System.out.println("test1");
-        list.traverse();
-        System.out.println("test2");
-    }
-
+    /*Methods*/
     public String toString() {
         return head.toString();
-    }
-
-    public Student remove(Student item) {
-        StudentNode temp = head;
-        while (temp != null && temp.next != null) {
-            if (temp.equals(item)) {
-                Student s = temp.next.student;
-                temp.next = temp.next.next;
-                return s;
-            }
-            temp = temp.next;
-        }
-        return null;
     }
 
     public Student insertByAverage(Student s) {
@@ -70,25 +31,21 @@ public class StudentList {
         return null;
     }
 
-    public void sortByAverage() {
-        sortByAverage(head);
+    public void sortByLastName() {
+        sortByLastName(head);
     }
 
-    public void sortByAverage(StudentNode node) {
+    private void sortByLastName(StudentNode node) {
         StudentList temp = new StudentList();
-        temp.insertByAverage(head);
+        temp.insertByLastName(head);
         head = head.next;
         while (head != null) {
             StudentNode tempNode = head;
             head = head.next;
-            temp.insertByAverage(tempNode);
+            temp.insertByLastName(tempNode);
 
         }
         head = temp.head;
-    }
-
-    public Student insertByLastName(Student s) {
-        return insertByLastName(new StudentNode(s, null));
     }
 
     private Student insertByLastName(StudentNode node) {
@@ -118,21 +75,33 @@ public class StudentList {
 
     }
 
-    public void sortByLastName() {
-        sortByLastName(head);
+    public static void main(String[] args) {
+        StudentList list = new StudentList();
+        Student thomas = list.insertByLastName(new Student("Thomas", "Edgars", 89));
+        Student jeniffer = list.insertByLastName(new Student("Jeniffer", "Smith", 86));
+        Student harold = list.insertByLastName(new Student("Harold", "Umberton", 78));
+        Student frank = list.insertByLastName(new Student("Frank", "Martin", 60));
+        Student jeremy = list.insertByLastName(new Student("Jeremy", "Andrews", 83));
+        Student laura = list.insertByLastName(new Student("Laura", "Roberts", 93));
+        Student adele = list.insertByLastName(new Student("Adele", "Lincoln", 85));
+        Student peter = list.insertByLastName(new Student("Peter", "Smith", 91));
+        Student larry = list.insertByLastName(new Student("Larry", "Peterson", 72));
+        System.out
+                .println("_________ Students inserted by last name _________");
+        list.traverse();
+        list.remove(frank);
+        System.out.println("Removed Frank. Poor Frank");
+        System.out.println();
+        list.traverse();
+        System.out.println("test");
+        list.sortByAverage();
+        System.out.println("test1");
+        list.traverse();
+        System.out.println("test2");
     }
 
-    private void sortByLastName(StudentNode node) {
-        StudentList temp = new StudentList();
-        temp.insertByLastName(head);
-        head = head.next;
-        while (head != null) {
-            StudentNode tempNode = head;
-            head = head.next;
-            temp.insertByLastName(tempNode);
-
-        }
-        head = temp.head;
+    public Student insertByLastName(Student s) {
+        return insertByLastName(new StudentNode(s, null));
     }
 
     public void traverse() {
@@ -143,6 +112,38 @@ public class StudentList {
         }
         System.out.println("_________________________");
     }
+
+    public Student remove(Student item) {
+        StudentNode temp = head;
+        while (temp != null && temp.next != null) {
+            if (temp.equals(item)) {
+                Student s = temp.next.student;
+                temp.next = temp.next.next;
+                return s;
+            }
+            temp = temp.next;
+        }
+        return null;
+    }
+
+    public void sortByAverage() {
+        sortByAverage(head);
+    }
+
+    public void sortByAverage(StudentNode node) {
+        StudentList temp = new StudentList();
+        temp.insertByAverage(head);
+        head = head.next;
+        while (head != null) {
+            StudentNode tempNode = head;
+            head = head.next;
+            temp.insertByAverage(tempNode);
+
+        }
+        head = temp.head;
+    }
+
+    private StudentNode head = null;
 
     private class StudentNode {
         private Student student;
