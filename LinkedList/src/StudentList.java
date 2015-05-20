@@ -13,6 +13,7 @@ public class StudentList {
 	private Student insertByAverage(StudentNode node) {
 		if (head == null) {
 			head = node;
+			head.next = null;
 			return node.student;
 		}
 		StudentNode temp = head;
@@ -23,19 +24,21 @@ public class StudentList {
 		}
 
 		while (temp != null && temp.next != null) {
-			System.out.println(temp.student.toString());
 			if (temp.next.student.getGPA() > node.student.getGPA()) {
 				node.next = temp.next;
 				temp.next = node;
-				System.out.println("IBA loop");
+				System.out.println("inserted");
 				return node.student;
-
-			} else {
+			} else
+			{
 				temp = temp.next;
-				System.out.println("IBA out of loop");
+				System.out.println("not inserted");
 			}
 		}
-		return null;
+		temp.next = node;
+		temp.next.next = null;
+		return temp.next.student;
+
 	}
 
 	public void sortByLastName() {
@@ -140,20 +143,24 @@ public class StudentList {
 		sortByAverage(head);
 	}
 
-	public void sortByAverage(StudentNode node) {
+	public void sortByAverage(StudentNode node)
+	{
 		StudentList temp = new StudentList();
-		temp.insertByAverage(head);
-		head = head.next;
-		while (head != null) {
-			StudentNode tempNode = head;
-			head = head.next;
-			temp.insertByAverage(tempNode);
-			// System.out.println(head );
+		StudentNode spot = head.next;
+		temp.head = head;
+		temp.head.next = null;
+		while(spot != null && spot.next != null)
+		{
+			StudentNode insert = spot;
+			spot = spot.next;
+			insert.next = null;
+			temp.insertByAverage(insert);
 
+			System.out.println("runnin");
 		}
-		System.out.println("blah2");
 		head = temp.head;
 	}
+
 
 	private class StudentNode {
 		private Student student;
@@ -206,7 +213,7 @@ public class StudentList {
 			list.head = list.head.next;
 
 		}*/
-		list.sortByLastName();
+		list.sortByAverage();
 		System.out.println("RAN");
 		list.traverse();
 		/*
