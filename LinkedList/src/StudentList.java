@@ -21,12 +21,17 @@ public class StudentList {
         }
 
         while (temp != null && temp.next != null) {
+            System.out.println(temp.student.toString());
             if (temp.next.student.getGPA() > node.student.getGPA()) {
                 node.next = temp.next;
                 temp.next = node;
+                System.out.println("IBA loop");
                 return node.student;
-            } else
+
+            } else {
                 temp = temp.next;
+                System.out.println("IBA out of loop");
+            }
         }
         return null;
     }
@@ -138,8 +143,10 @@ public class StudentList {
             StudentNode tempNode = head;
             head = head.next;
             temp.insertByAverage(tempNode);
+           // System.out.println(head );
 
         }
+        System.out.println("blah2");
         head = temp.head;
     }
 
