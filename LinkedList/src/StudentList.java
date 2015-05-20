@@ -1,225 +1,216 @@
-public class StudentList {
+public class StudentList
+    {
 	private StudentNode head = null;
 
 	/* Methods */
-	/*public String toString() {
-		return head.toString();
-	}*/
+	/*
+	 * public String toString() { return head.toString(); }
+	 */
 
-	public Student insertByAverage(Student s) {
+	private class StudentNode
+	    {
+		private Student student;
+		private StudentNode next;
+
+		public StudentNode(Student student, StudentNode next)
+		    {
+			this.student = student;
+			this.next = next;
+		    }
+	    }
+
+	public static void header(String str)
+	    {
+		for (int i = 0; i < str.length() - 1; i++)
+		    System.out.print("_");
+		System.out.println("_");
+		System.out.println(str);
+		for (int i = 0; i < str.length() - 1; i++)
+		    System.out.print("_");
+		System.out.println("_");
+	    }
+
+	public Student insertByAverage(Student s)
+	    {
 		return insertByAverage(new StudentNode(s, null));
-	}
+	    }
 
-	private Student insertByAverage(StudentNode node) {
-		if (head == null) {
+	private Student insertByAverage(StudentNode node)
+	    {
+		if (head == null)
+		    {
 			head = node;
 			head.next = null;
 			return node.student;
-		}
+		    }
 		StudentNode temp = head;
-		if (temp.student.getGPA() > node.student.getGPA()) {
+		if (temp.student.getGPA() > node.student.getGPA())
+		    {
 			head = node;
 			node.next = temp;
 			return node.student;
-		}
+		    }
 
-		while (temp != null && temp.next != null) {
-			if (temp.next.student.getGPA() > node.student.getGPA()) {
+		while (temp != null && temp.next != null)
+		    {
+			if (temp.next.student.getGPA() > node.student.getGPA())
+			    {
 				node.next = temp.next;
 				temp.next = node;
-				System.out.println("inserted");
 				return node.student;
-			} else
-			{
+			    } else
+			    {
 				temp = temp.next;
-				System.out.println("not inserted");
-			}
-		}
+			    }
+		    }
 		temp.next = node;
 		temp.next.next = null;
 		return temp.next.student;
 
-	}
+	    }
 
-	public void sortByLastName() {
+	public void sortByLastName()
+	    {
 		sortByLastName(head);
-	}
+	    }
 
-/*	private void sortByLastName(StudentNode node) {
-		StudentList temp = new StudentList();
-		temp.insertByLastName(head);
-		head = head.next;
-		StudentNode tempNode = head;
-		while (tempNode != null) {
-
-			// System.out.println(temp.toString());
-			temp.insertByLastName(tempNode);
-			System.out.println(tempNode.student.toString());
-			System.out.println("loopran");
-			
-			head = head.next;
-			tempNode = head;
-		}
-		head = temp.head;
-	}*/
-	public void sortByLastName(StudentNode node)
-	{
+	private void sortByLastName(StudentNode node)
+	    {
 		StudentList temp = new StudentList();
 		StudentNode spot = head.next;
 		temp.head = head;
 		temp.head.next = null;
-		while(spot != null && spot.next != null)
-		{
+		while (spot != null)
+		    {
 			StudentNode insert = spot;
 			spot = spot.next;
 			insert.next = null;
 			temp.insertByLastName(insert);
-
-			System.out.println("runnin");
-		}
+		    }
 		head = temp.head;
-	}
+	    }
 
-	private Student insertByLastName(StudentNode node) {
-		if (head == null) {
+	private Student insertByLastName(StudentNode node)
+	    {
+		if (head == null)
+		    {
 			head = node;
 			head.next = null;
 			return node.student;
-		}
+		    }
 		StudentNode temp = head;
-		if (temp.student.getLastName().compareToIgnoreCase(
-				node.student.getLastName()) > 0) {
+		if (temp.student.getLastName().compareToIgnoreCase(node.student.getLastName()) > 0)
+		    {
 			head = node;
 			node.next = temp;
 			return node.student;
-		}
+		    }
 
-		while (temp != null && temp.next != null) {
+		while (temp != null && temp.next != null)
+		    {
 			if (temp.next.student.getLastName().compareToIgnoreCase(
-					node.student.getLastName()) > 0) {
+				node.student.getLastName()) > 0)
+			    {
 				node.next = temp.next;
 				temp.next = node;
-				System.out.println("inserted");
 				return node.student;
-			} else
-			{
+			    } else
+			    {
 				temp = temp.next;
-				System.out.println("not inserted");
-			}
-		}
+			    }
+		    }
 		temp.next = node;
 		temp.next.next = null;
 		return temp.next.student;
 
-	}
+	    }
 
-	public Student insertByLastName(Student s) {
+	/**
+	 * 
+	 * @param s
+	 *            The Student to be added to the list
+	 * @return The Student
+	 */
+	public Student insertByLastName(Student s)
+	    {
 		return insertByLastName(new StudentNode(s, null));
-	}
+	    }
 
-	public void traverse() {
+	/**
+	 * Prints the entire StudentList in the current order
+	 */
+	public void traverse()
+	    {
 		StudentNode temp = head;
-		while (temp != null) {
+		while (temp != null)
+		    {
 			System.out.println(temp.student.toString());
 			temp = temp.next;
-		}
-		System.out.println("_________________________");
-	}
+		    }
+		System.out.println("-------------------------");
+	    }
 
-	public Student remove(Student item) {
+	/**
+	 * 
+	 * @param item
+	 *            Student to be removed
+	 * @return the Student if he/she is in the list, null if he/she isn't
+	 */
+	public Student remove(Student item)
+	    {
 		StudentNode temp = head;
-		while (temp != null && temp.next != null) {
-			if (temp.equals(item)) {
+		while (temp != null && temp.next != null)
+		    {
+			if (temp.next.student == item)
+			    {
 				Student s = temp.next.student;
 				temp.next = temp.next.next;
 				return s;
-			}
+			    }
 			temp = temp.next;
-		}
+		    }
 		return null;
-	}
+	    }
 
-	public void sortByAverage() {
+	public void sortByAverage()
+	    {
 		sortByAverage(head);
-	}
+	    }
 
 	public void sortByAverage(StudentNode node)
-	{
+	    {
 		StudentList temp = new StudentList();
 		StudentNode spot = head.next;
 		temp.head = head;
 		temp.head.next = null;
-		while(spot != null && spot.next != null)
-		{
+		while (spot != null)
+		    {
 			StudentNode insert = spot;
 			spot = spot.next;
 			insert.next = null;
 			temp.insertByAverage(insert);
-
-			System.out.println("runnin");
-		}
+		    }
 		head = temp.head;
-	}
+	    }
 
-
-	private class StudentNode {
-		private Student student;
-		private StudentNode next;
-
-		public StudentNode(Student student, StudentNode next) {
-			this.student = student;
-			this.next = next;
-		}
-
-		/*public String toString() {
-			if (next != null)
-				return student.toString() + " " + next.toString();
-			return "";
-		}*/
-	}
-
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	    {
 		StudentList list = new StudentList();
-		Student thomas = list.insertByLastName(new Student("Thomas", "Edgars",
-				89));
-		Student jeniffer = list.insertByLastName(new Student("Jeniffer",
-				"Smith", 86));
-		Student harold = list.insertByLastName(new Student("Harold",
-				"Umberton", 78));
-		Student frank = list
-				.insertByLastName(new Student("Frank", "Martin", 60));
-		Student jeremy = list.insertByLastName(new Student("Jeremy", "Andrews",
-				83));
-		Student laura = list.insertByLastName(new Student("Laura", "Roberts",
-				93));
-		Student adele = list.insertByLastName(new Student("Adele", "Lincoln",
-				85));
-		Student peter = list
-				.insertByLastName(new Student("Peter", "Smith", 91));
-		Student larry = list.insertByLastName(new Student("Larry", "Peterson",
-				72));
-		System.out
-				.println("_________ Students inserted by last name _________");
+		Student thomas = list.insertByLastName(new Student("Thomas", "Edgars", 89));
+		Student jeniffer = list.insertByLastName(new Student("Jeniffer", "Smith", 86));
+		Student harold = list.insertByLastName(new Student("Harold", "Umberton", 78));
+		Student frank = list.insertByLastName(new Student("Frank", "Martin", 60));
+		Student jeremy = list.insertByLastName(new Student("Jeremy", "Andrews", 83));
+		Student laura = list.insertByLastName(new Student("Laura", "Roberts", 93));
+		Student adele = list.insertByLastName(new Student("Adele", "Lincoln", 85));
+		Student peter = list.insertByLastName(new Student("Peter", "Smith", 91));
+		Student larry = list.insertByLastName(new Student("Larry", "Peterson", 72));
+		header("Students inserted by last name");
 		list.traverse();
 		list.remove(frank);
-		System.out.println("Removed Frank. Poor Frank");
-		System.out.println();
+		header("Removed Frank. Poor Frank");
 		list.traverse();
-/*		for(int i = 0; i < 3; i++)
-		{
-			System.out.println("BLAH");
-			StudentNode node  = list.head;
-			System.out.println(node.student.toString());
-			list.head = list.head.next;
-
-		}*/
 		list.sortByAverage();
-		System.out.println("RAN");
 		list.traverse();
-		/*
-		 * System.out.println("test"); list.sortByAverage();
-		 * System.out.println("test1"); list.traverse();
-		 * System.out.println("test2");
-		 */
-	}
-}
+	    }
+    }
