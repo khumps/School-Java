@@ -30,44 +30,51 @@ public class StudentList
 		System.out.println("_");
 	    }
 
-	public Student insertByAverage(Student s)
+	/**
+	 * 
+	 * @param s
+	 *            The Student to be added to the list
+	 * @return The Student
+	 */
+	public Student insertByLastName(Student s)
 	    {
-		return insertByAverage(new StudentNode(s, null));
+		return insertByLastName(new StudentNode(s, null));
 	    }
 
-	private Student insertByAverage(StudentNode node)
+	private Student insertByLastName(StudentNode node)
+	{
+	if (head == null)
 	    {
-		if (head == null)
-		    {
-			head = node;
-			head.next = null;
-			return node.student;
-		    }
-		StudentNode temp = head;
-		if (temp.student.getGPA() > node.student.getGPA())
-		    {
-			head = node;
-			node.next = temp;
-			return node.student;
-		    }
-
-		while (temp != null && temp.next != null)
-		    {
-			if (temp.next.student.getGPA() > node.student.getGPA())
-			    {
-				node.next = temp.next;
-				temp.next = node;
-				return node.student;
-			    } else
-			    {
-				temp = temp.next;
-			    }
-		    }
-		temp.next = node;
-		temp.next.next = null;
-		return temp.next.student;
-
+		head = node;
+		head.next = null;
+		return node.student;
 	    }
+	StudentNode temp = head;
+	if (temp.student.getLastName().compareToIgnoreCase(node.student.getLastName()) > 0)
+	    {
+		head = node;
+		node.next = temp;
+		return node.student;
+	    }
+	
+	while (temp != null && temp.next != null)
+	    {
+		if (temp.next.student.getLastName().compareToIgnoreCase(
+			node.student.getLastName()) > 0)
+		    {
+			node.next = temp.next;
+			temp.next = node;
+			return node.student;
+		    } else
+		    {
+			temp = temp.next;
+		    }
+	    }
+	temp.next = node;
+	temp.next.next = null;
+	return temp.next.student;
+	
+	}
 
 	public void sortByLastName()
 	    {
@@ -88,52 +95,6 @@ public class StudentList
 			temp.insertByLastName(insert);
 		    }
 		head = temp.head;
-	    }
-
-	private Student insertByLastName(StudentNode node)
-	    {
-		if (head == null)
-		    {
-			head = node;
-			head.next = null;
-			return node.student;
-		    }
-		StudentNode temp = head;
-		if (temp.student.getLastName().compareToIgnoreCase(node.student.getLastName()) > 0)
-		    {
-			head = node;
-			node.next = temp;
-			return node.student;
-		    }
-
-		while (temp != null && temp.next != null)
-		    {
-			if (temp.next.student.getLastName().compareToIgnoreCase(
-				node.student.getLastName()) > 0)
-			    {
-				node.next = temp.next;
-				temp.next = node;
-				return node.student;
-			    } else
-			    {
-				temp = temp.next;
-			    }
-		    }
-		temp.next = node;
-		temp.next.next = null;
-		return temp.next.student;
-
-	    }
-
-	/**
-	 * 
-	 * @param s
-	 *            The Student to be added to the list
-	 * @return The Student
-	 */
-	public Student insertByLastName(Student s)
-	    {
-		return insertByLastName(new StudentNode(s, null));
 	    }
 
 	/**
@@ -171,6 +132,45 @@ public class StudentList
 		    }
 		return null;
 	    }
+
+	public Student insertByAverage(Student s)
+	{
+	return insertByAverage(new StudentNode(s, null));
+	}
+
+	private Student insertByAverage(StudentNode node)
+	{
+	if (head == null)
+	    {
+		head = node;
+		head.next = null;
+		return node.student;
+	    }
+	StudentNode temp = head;
+	if (temp.student.getGPA() > node.student.getGPA())
+	    {
+		head = node;
+		node.next = temp;
+		return node.student;
+	    }
+	
+	while (temp != null && temp.next != null)
+	    {
+		if (temp.next.student.getGPA() > node.student.getGPA())
+		    {
+			node.next = temp.next;
+			temp.next = node;
+			return node.student;
+		    } else
+		    {
+			temp = temp.next;
+		    }
+	    }
+	temp.next = node;
+	temp.next.next = null;
+	return temp.next.student;
+	
+	}
 
 	public void sortByAverage()
 	    {
@@ -215,6 +215,9 @@ public class StudentList
 		list.traverse();
 		Student alice = list.insertByAverage(new Student("Alice", "Henderson", 90));
 		header("Inserted Alice by averate");
+		list.traverse();
+		list.sortByLastName();
+		header("Resorted by last name");
 		list.traverse();
 	    }
     }
