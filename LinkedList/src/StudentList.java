@@ -213,5 +213,8 @@ public class StudentList
 			header("Sorted by Average");
 		list.sortByAverage();
 		list.traverse();
+		Student alice = list.insertByAverage(new Student("Alice", "Henderson", 90));
+		header("Inserted Alice by averate");
+		list.traverse();
 	    }
     }
