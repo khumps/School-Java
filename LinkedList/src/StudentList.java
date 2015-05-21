@@ -210,6 +210,7 @@ public class StudentList
 		list.remove(frank);
 		header("Removed Frank. Poor Frank");
 		list.traverse();
+			header("Sorted by Average");
 		list.sortByAverage();
 		list.traverse();
 	    }
